@@ -7,13 +7,12 @@
             "step template": {
                 "title": "step title here",
                 "content": "html content here",
-                "type": "info, choice, instructions, reminder, completion, just for CSS",
-                "actions": [
+                "type": "info, choice, instructions, reminder, completion. Not actually used, but could drive some styling."
+                actions": [
                     { "label": "action 1 label", "nextStep": "next step name" },
                     { "label": "action 2 label", "nextStep": "another next step name" },
                 ]
             }
-
 
 
 
