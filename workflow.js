@@ -5,7 +5,6 @@ class WorkflowManager {
         this.stepHistory = [];
         this.stepOrder = []; // Will be populated based on workflow structure
         this.isNavigating = false; // Prevent double navigation
-
         this.elements = {
             loading: document.getElementById('loading'),
             content: document.getElementById('workflowContent'),
@@ -42,22 +41,10 @@ class WorkflowManager {
 
             const config = await response.json();
             this.workflow = config.workflow;
-
-            this.buildStepOrder();
-            this.showStep(this.workflow.startStep);
         } catch (error) {
             console.error('Error loading workflow:', error);
             this.showError('Failed to load workflow configuration. Make sure workflow-config.json is available.');
         }
-    }
-
-    buildStepOrder() {
-        // Build a logical order for progress calculation
-        // This could be made more dynamic by analyzing the workflow structure
-        this.stepOrder = [
-            'welcome', 'operating-system', 'install-mac', 'install-windows',
-            'github-setup', 'github-reminder', 'extensions', 'git-config', 'complete'
-        ];
     }
 
     showStep(stepId, pushToHistory = true) {
@@ -115,13 +102,12 @@ class WorkflowManager {
 
         let backButton = null;
 
-        // Add back button if we have history and not on first step
-        if (this.stepHistory.length > 0 && this.currentStep !== this.workflow.startStep) {
+        // Add back button when not on first step
+        if (this.currentStep !== this.workflow.startStep) {
             backButton = document.createElement('button');
             backButton.className = 'action-btn back-btn';
             backButton.textContent = '← Back';
             backButton.onclick = () => this.goBack();
-            //buttonContainer.appendChild(backButton);
         }
 
         // Add main action buttons
