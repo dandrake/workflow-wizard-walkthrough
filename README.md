@@ -11,7 +11,8 @@ https://docs.google.com/document/d/1RJuwG1kIlrMOu8zurt7vIXsyJJwpuaTZSJqE8J6R_sc/
 
 Should be straightforward, see the JSON file.
 
-## Running locally
+## Running/viewing
 
-Super simple way to run this locally while writing the steps: do `python
--m http.server 8000` in this directory.
+- https://dandrake.github.io/workflow-wizard-walkthrough/
+- locally: the simplest way is likely to just do `python -m http.server
+  8000` in this directory.
