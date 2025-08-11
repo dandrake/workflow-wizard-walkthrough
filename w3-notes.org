@@ -1,0 +1,24 @@
+* Steps
+1. welcome
+2. create your accounts: github
+3. create your accounts: MSCS Slack
+4. send us your account info
+5. install Java: win or Mac?
+6. install java: win
+7. install java: mac
+8. install VS Code: win or mac?
+9. install VS code win
+10. install VS code mac
+11. install vs code common
+12. install git: mac or win?
+13. install git mac
+14. install git win
+15. verify git
+16. install github desktop: mac or win?
+17. github desktop win
+18. github desktop mac
+19. github desktop common
+20. run your first java project!
+21. lots of substeps, here, likely split hthose up
+22. let your instructor know you have it working (or not)
+23. have fun!
