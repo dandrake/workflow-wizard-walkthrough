@@ -1,16 +1,40 @@
 {
   "workflow": {
-    "title": "VS Code Installation & Setup Guide",
+    "title": "Comp 127 Installfest and Environment Setup (VS Code)",
     "startStep": "welcome",
     "steps": {
       "welcome": {
-        "title": "Welcome to VS Code Setup",
+        "title": "Installation and Setup for Comp 127",
         "contentFile": "step-welcome.html",
         "type": "info",
         "actions": [
           {
-            "label": "Get Started",
-            "nextStep": "install-java"
+            "label": "Create your accounts",
+            "nextStep": "create-account-github"
+          }
+        ]
+      },
+
+      "create-account-github": {
+        "title": "Get a GitHub Account",
+        "contentFile": "create-account-github.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Get a Macalester MSCS Slack account",
+            "nextStep": "create-account-slack"
+          }
+        ]
+      },
+
+      "create-account-slack": {
+        "title": "Get a Macalester MSCS Slack Account",
+        "contentFile": "create-account-slack.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Send us your account info",
+            "nextStep": "send-account-info.html"
           }
         ]
       },

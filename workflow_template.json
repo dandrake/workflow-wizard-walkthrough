@@ -1,132 +1,135 @@
 {
-    "workflow": {
-        "title": "VS Code Installation & Setup Guide",
-        "startStep": "welcome",
-        "steps": {
+  "workflow": {
+    "title": "VS Code Installation & Setup Guide",
+    "startStep": "welcome",
+    "steps": {
+      //
+      // the basic step template:
+      //
 
-            "step template": {
-                "title": "step title here",
-                "content": "html content here",
-                "type": "info, choice, instructions, reminder, completion. Not actually used, but could drive some styling."
-                actions": [
-                    { "label": "action 1 label", "nextStep": "next step name" },
-                    { "label": "action 2 label", "nextStep": "another next step name" },
-                ]
-            }
+      "step template": {
+        "title": "step title here",
+        // can do contentFile or content; if contentFile is
+        // provided, that takes precedence.
+        "contentFile": "filename.html",
+        "content": "html content here",
+        "type": "info, choice, instructions, reminder, completion. Not actually used, but could drive some styling.",
+        "actions": [
+          { "label": "action 1 label", "nextStep": "next step name" },
+          { "label": "action 2 label", "nextStep": "another next step name" }
+        ]
+      },
 
-
-
-
-
-
-
-            "welcome": {
-                "title": "Welcome to VS Code Setup",
-                "content": "<h2>VS Code Installation & Configuration</h2><p>This guide will walk you through installing Visual Studio Code and setting up your development environment.</p><p>We'll cover:</p><ul><li>Installing VS Code for your operating system</li><li>Setting up a GitHub account</li><li>Configuring VS Code with essential extensions</li><li>Connecting to version control</li></ul>",
-                "type": "info",
-                "actions": [
-                    {
-                        "label": "Get Started",
-                        "nextStep": "operating-system"
-                    }
-                ]
-            },
-            "operating-system": {
-                "title": "Choose Your Operating System",
-                "content": "<h2>Select Your Operating System</h2><p>Please select your operating system to get the appropriate installation instructions.</p>",
-                "type": "choice",
-                "actions": [
-                    {
-                        "label": "macOS",
-                        "nextStep": "install-mac"
-                    },
-                    {
-                        "label": "Windows",
-                        "nextStep": "install-windows"
-                    }
-                ]
-            },
-            "install-mac": {
-                "title": "Install VS Code on macOS",
-                "content": "<h2>Installing VS Code on macOS</h2><ol><li><strong>Download:</strong> Go to <a href='https://code.visualstudio.com/' target='_blank'>code.visualstudio.com</a></li><li><strong>Install:</strong> Download the .zip file and drag VS Code to your Applications folder</li><li><strong>Launch:</strong> Open VS Code from Applications or Spotlight search</li></ol><div class='reminder'><strong>💡 Tip:</strong> You can also install via Homebrew: <code>brew install --cask visual-studio-code</code></div>",
-                "type": "instructions",
-                "actions": [
-                    {
-                        "label": "I've installed VS Code",
-                        "nextStep": "github-setup"
-                    }
-                ]
-            },
-            "install-windows": {
-                "title": "Install VS Code on Windows",
-                "content": "<h2>Installing VS Code on Windows</h2><ol><li><strong>Download:</strong> Go to <a href='https://code.visualstudio.com/' target='_blank'>code.visualstudio.com</a></li><li><strong>Run installer:</strong> Download and run the VSCodeUserSetup.exe file</li><li><strong>Follow wizard:</strong> Accept the license and choose installation options</li><li><strong>Launch:</strong> VS Code will start automatically after installation</li></ol><div class='reminder'><strong>⚠️ Important:</strong> Make sure to check 'Add to PATH' during installation for command line access.</div>",
-                "type": "instructions",
-                "actions": [
-                    {
-                        "label": "I've installed VS Code",
-                        "nextStep": "github-setup"
-                    }
-                ]
-            },
-            "github-setup": {
-                "title": "GitHub Account Setup",
-                "content": "<h2>Set Up Your GitHub Account</h2><p>If you don't already have a GitHub account, you'll need to create one:</p><ol><li><strong>Visit:</strong> <a href='https://github.com' target='_blank'>github.com</a></li><li><strong>Sign up:</strong> Click 'Sign up' and follow the registration process</li><li><strong>Verify:</strong> Verify your email address</li><li><strong>Username:</strong> Choose a professional username (you'll use this for work)</li></ol><div class='reminder'><strong>📧 Action Required:</strong> Once you have your GitHub account, you MUST send your GitHub username to your instructors!</div>",
-                "type": "instructions",
-                "actions": [
-                    {
-                        "label": "I have a GitHub account",
-                        "nextStep": "github-reminder"
-                    }
-                ]
-            },
-            "github-reminder": {
-                "title": "Share Your GitHub Username",
-                "content": "<h2>Don't Forget to Share Your Info!</h2><div class='reminder urgent'><strong>🎯 Required Action:</strong><br>Email your GitHub username to your instructors:<ul><li><strong>Your GitHub username:</strong> _________________</li><li><strong>Send to:</strong> [instructor-email@example.com]</li></ul><p>This is required for class assignments and collaboration.</p></div><p>Have you sent your GitHub username to the instructors?</p>",
-                "type": "reminder",
-                "actions": [
-                    {
-                        "label": "Yes, I've sent my info",
-                        "nextStep": "extensions"
-                    },
-                    {
-                        "label": "I'll do it now",
-                        "nextStep": "extensions"
-                    }
-                ]
-            },
-            "extensions": {
-                "title": "Install Essential Extensions",
-                "content": "<h2>Install Recommended Extensions</h2><p>Let's install some essential VS Code extensions to improve your coding experience:</p><ol><li><strong>Open Extensions:</strong> Click the Extensions icon in the sidebar (or press Ctrl/Cmd+Shift+X)</li><li><strong>Install these extensions:</strong><ul><li><strong>GitLens:</strong> Enhanced Git capabilities</li><li><strong>Prettier:</strong> Code formatter</li><li><strong>Live Server:</strong> Local development server</li><li><strong>Bracket Pair Colorizer:</strong> Easier bracket matching</li></ul></li><li><strong>Search and install:</strong> Type each extension name and click Install</li></ol>",
-                "type": "instructions",
-                "actions": [
-                    {
-                        "label": "Extensions installed",
-                        "nextStep": "git-config"
-                    }
-                ]
-            },
-            "git-config": {
-                "title": "Configure Git",
-                "content": "<h2>Configure Git in VS Code</h2><p>Set up Git with your information:</p><ol><li><strong>Open Terminal:</strong> In VS Code, go to Terminal → New Terminal</li><li><strong>Configure your name:</strong><br><code>git config --global user.name \"Your Name\"</code></li><li><strong>Configure your email:</strong><br><code>git config --global user.email \"your.email@example.com\"</code></li><li><strong>Verify settings:</strong><br><code>git config --list</code></li></ol><div class='reminder'><strong>📝 Note:</strong> Use the same email address associated with your GitHub account.</div>",
-                "type": "instructions",
-                "actions": [
-                    {
-                        "label": "Git is configured",
-                        "nextStep": "complete"
-                    }
-                ]
-            },
-            "complete": {
-                "title": "Setup Complete!",
-                "content": "<h2>🎉 Congratulations!</h2><p>You've successfully set up your VS Code development environment!</p><h3>What you've accomplished:</h3><ul><li>✅ Installed VS Code</li><li>✅ Created/configured GitHub account</li><li>✅ Installed essential extensions</li><li>✅ Configured Git</li></ul><h3>Next steps:</h3><ul><li>Start exploring VS Code features</li><li>Clone your first repository</li><li>Begin coding!</li></ul><div class='reminder'><strong>🔗 Helpful Resources:</strong><br><a href='https://code.visualstudio.com/docs' target='_blank'>VS Code Documentation</a><br><a href='https://docs.github.com/' target='_blank'>GitHub Docs</a></div>",
-                "type": "completion",
-                "actions": [
-                    {
-                        "label": "Start Over",
-                        "nextStep": "welcome"
-                    }
-                ]
-            }
-        }
+      //
+      // some actual steps from the original prototype
+      //
+      "welcome": {
+        "title": "Welcome to VS Code Setup",
+        "content": "<h2>VS Code Installation & Configuration</h2><p>This guide will walk you through installing Visual Studio Code and setting up your development environment.</p><p>We'll cover:</p><ul><li>Installing VS Code for your operating system</li><li>Setting up a GitHub account</li><li>Configuring VS Code with essential extensions</li><li>Connecting to version control</li></ul>",
+        "type": "info",
+        "actions": [
+          {
+            "label": "Get Started",
+            "nextStep": "operating-system"
+          }
+        ]
+      },
+      "operating-system": {
+        "title": "Choose Your Operating System",
+        "content": "<h2>Select Your Operating System</h2><p>Please select your operating system to get the appropriate installation instructions.</p>",
+        "type": "choice",
+        "actions": [
+          {
+            "label": "macOS",
+            "nextStep": "install-mac"
+          },
+          {
+            "label": "Windows",
+            "nextStep": "install-windows"
+          }
+        ]
+      },
+      "install-mac": {
+        "title": "Install VS Code on macOS",
+        "content": "<h2>Installing VS Code on macOS</h2><ol><li><strong>Download:</strong> Go to <a href='https://code.visualstudio.com/' target='_blank'>code.visualstudio.com</a></li><li><strong>Install:</strong> Download the .zip file and drag VS Code to your Applications folder</li><li><strong>Launch:</strong> Open VS Code from Applications or Spotlight search</li></ol><div class='reminder'><strong>💡 Tip:</strong> You can also install via Homebrew: <code>brew install --cask visual-studio-code</code></div>",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "I've installed VS Code",
+            "nextStep": "github-setup"
+          }
+        ]
+      },
+      "install-windows": {
+        "title": "Install VS Code on Windows",
+        "content": "<h2>Installing VS Code on Windows</h2><ol><li><strong>Download:</strong> Go to <a href='https://code.visualstudio.com/' target='_blank'>code.visualstudio.com</a></li><li><strong>Run installer:</strong> Download and run the VSCodeUserSetup.exe file</li><li><strong>Follow wizard:</strong> Accept the license and choose installation options</li><li><strong>Launch:</strong> VS Code will start automatically after installation</li></ol><div class='reminder'><strong>⚠️ Important:</strong> Make sure to check 'Add to PATH' during installation for command line access.</div>",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "I've installed VS Code",
+            "nextStep": "github-setup"
+          }
+        ]
+      },
+      "github-setup": {
+        "title": "GitHub Account Setup",
+        "content": "<h2>Set Up Your GitHub Account</h2><p>If you don't already have a GitHub account, you'll need to create one:</p><ol><li><strong>Visit:</strong> <a href='https://github.com' target='_blank'>github.com</a></li><li><strong>Sign up:</strong> Click 'Sign up' and follow the registration process</li><li><strong>Verify:</strong> Verify your email address</li><li><strong>Username:</strong> Choose a professional username (you'll use this for work)</li></ol><div class='reminder'><strong>📧 Action Required:</strong> Once you have your GitHub account, you MUST send your GitHub username to your instructors!</div>",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "I have a GitHub account",
+            "nextStep": "github-reminder"
+          }
+        ]
+      },
+      "github-reminder": {
+        "title": "Share Your GitHub Username",
+        "content": "<h2>Don't Forget to Share Your Info!</h2><div class='reminder urgent'><strong>🎯 Required Action:</strong><br>Email your GitHub username to your instructors:<ul><li><strong>Your GitHub username:</strong> _________________</li><li><strong>Send to:</strong> [instructor-email@example.com]</li></ul><p>This is required for class assignments and collaboration.</p></div><p>Have you sent your GitHub username to the instructors?</p>",
+        "type": "reminder",
+        "actions": [
+          {
+            "label": "Yes, I've sent my info",
+            "nextStep": "extensions"
+          },
+          {
+            "label": "I'll do it now",
+            "nextStep": "extensions"
+          }
+        ]
+      },
+      "extensions": {
+        "title": "Install Essential Extensions",
+        "content": "<h2>Install Recommended Extensions</h2><p>Let's install some essential VS Code extensions to improve your coding experience:</p><ol><li><strong>Open Extensions:</strong> Click the Extensions icon in the sidebar (or press Ctrl/Cmd+Shift+X)</li><li><strong>Install these extensions:</strong><ul><li><strong>GitLens:</strong> Enhanced Git capabilities</li><li><strong>Prettier:</strong> Code formatter</li><li><strong>Live Server:</strong> Local development server</li><li><strong>Bracket Pair Colorizer:</strong> Easier bracket matching</li></ul></li><li><strong>Search and install:</strong> Type each extension name and click Install</li></ol>",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Extensions installed",
+            "nextStep": "git-config"
+          }
+        ]
+      },
+      "git-config": {
+        "title": "Configure Git",
+        "content": "<h2>Configure Git in VS Code</h2><p>Set up Git with your information:</p><ol><li><strong>Open Terminal:</strong> In VS Code, go to Terminal → New Terminal</li><li><strong>Configure your name:</strong><br><code>git config --global user.name \"Your Name\"</code></li><li><strong>Configure your email:</strong><br><code>git config --global user.email \"your.email@example.com\"</code></li><li><strong>Verify settings:</strong><br><code>git config --list</code></li></ol><div class='reminder'><strong>📝 Note:</strong> Use the same email address associated with your GitHub account.</div>",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Git is configured",
+            "nextStep": "complete"
+          }
+        ]
+      },
+      "complete": {
+        "title": "Setup Complete!",
+        "content": "<h2>🎉 Congratulations!</h2><p>You've successfully set up your VS Code development environment!</p><h3>What you've accomplished:</h3><ul><li>✅ Installed VS Code</li><li>✅ Created/configured GitHub account</li><li>✅ Installed essential extensions</li><li>✅ Configured Git</li></ul><h3>Next steps:</h3><ul><li>Start exploring VS Code features</li><li>Clone your first repository</li><li>Begin coding!</li></ul><div class='reminder'><strong>🔗 Helpful Resources:</strong><br><a href='https://code.visualstudio.com/docs' target='_blank'>VS Code Documentation</a><br><a href='https://docs.github.com/' target='_blank'>GitHub Docs</a></div>",
+        "type": "completion",
+        "actions": [
+          {
+            "label": "Start Over",
+            "nextStep": "welcome"
+          }
+        ]
+      }
     }
+  }
 }
