@@ -1,211 +1,228 @@
 class WorkflowManager {
-    constructor() {
-        this.workflow = null;
-        this.currentStep = null;
-        this.stepHistory = [];
-        this.stepOrder = []; // Will be populated based on workflow structure
-        this.isNavigating = false; // Prevent double navigation
-        this.elements = {
-            loading: document.getElementById('loading'),
-            content: document.getElementById('workflowContent'),
-            stepCounter: document.getElementById('stepCounter'),
-            stepTitle: document.getElementById('stepTitle'),
-            stepContent: document.getElementById('stepContent'),
-            stepActions: document.getElementById('stepActions'),
-            progressFill: document.getElementById('progressFill')
-        };
+  constructor() {
+    this.workflow = null;
+    this.currentStep = null;
+    this.stepHistory = [];
+    this.stepOrder = []; // Will be populated based on workflow structure
+    this.isNavigating = false; // Prevent double navigation
+    this.elements = {
+      loading: document.getElementById("loading"),
+      content: document.getElementById("workflowContent"),
+      stepCounter: document.getElementById("stepCounter"),
+      stepTitle: document.getElementById("stepTitle"),
+      stepContent: document.getElementById("stepContent"),
+      stepActions: document.getElementById("stepActions"),
+      progressFill: document.getElementById("progressFill"),
+    };
 
-        // Set up browser back/forward button handling
-        this.setupBrowserNavigation();
+    // Set up browser back/forward button handling
+    this.setupBrowserNavigation();
+  }
+
+  setupBrowserNavigation() {
+    // Handle browser back/forward buttons
+    window.addEventListener("popstate", (event) => {
+      if (event.state && event.state.step) {
+        this.isNavigating = true;
+        this.currentStep = event.state.step;
+        this.showStep(event.state.step, false); // Don't push to history
+        this.isNavigating = false;
+      }
+    });
+  }
+
+  async loadWorkflow() {
+    try {
+      // Load workflow configuration from external JSON file
+      const response = await fetch("workflow_config.json");
+      if (!response.ok) {
+        throw new Error(`Failed to load workflow config: ${response.status}`);
+      }
+
+      const config = await response.json();
+      this.workflow = config.workflow;
+    } catch (error) {
+      console.error("Error loading workflow:", error);
+      this.showError(
+        "Failed to load workflow configuration. Make sure workflow-config.json is available.",
+      );
+    }
+  }
+
+  showStep(stepId, pushToHistory = true) {
+    const step = this.workflow.steps[stepId];
+    if (!step) {
+      console.error(`Step ${stepId} not found`);
+      this.showError(`Step "${stepId}" not found in workflow configuration.`);
+      return;
     }
 
-    setupBrowserNavigation() {
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.step) {
-                this.isNavigating = true;
-                this.currentStep = event.state.step;
-                this.showStep(event.state.step, false); // Don't push to history
-                this.isNavigating = false;
-            }
-        });
+    this.currentStep = stepId;
+
+    // Update browser history (unless we're responding to back/forward)
+    if (pushToHistory && !this.isNavigating) {
+      const url = new URL(window.location);
+      url.searchParams.set("step", stepId);
+      history.pushState({ step: stepId }, step.title, url.toString());
     }
 
-    async loadWorkflow() {
-        try {
-            // Load workflow configuration from external JSON file
-            const response = await fetch('workflow_config.json');
-            if (!response.ok) {
-                throw new Error(`Failed to load workflow config: ${response.status}`);
-            }
+    // Hide loading, show content
+    this.elements.loading.classList.remove("show");
+    this.elements.content.style.display = "block";
 
-            const config = await response.json();
-            this.workflow = config.workflow;
-        } catch (error) {
-            console.error('Error loading workflow:', error);
-            this.showError('Failed to load workflow configuration. Make sure workflow-config.json is available.');
-        }
+    // Update content
+    this.elements.stepTitle.textContent = step.title;
+    if (step.contentFile) {
+      fetch(step.contentFile)
+        .then((response) => response.text())
+        .then((content) => {
+          this.elements.stepContent.innerHTML = content;
+        })
+        .catch((error) =>
+          console.error("Error loading HTML fragment: ", errors),
+        );
+    } else {
+      this.elements.stepContent.innerHTML = step.content;
     }
 
-    showStep(stepId, pushToHistory = true) {
-        const step = this.workflow.steps[stepId];
-        if (!step) {
-            console.error(`Step ${stepId} not found`);
-            this.showError(`Step "${stepId}" not found in workflow configuration.`);
-            return;
-        }
+    // Update step counter and progress
+    this.updateProgress();
 
-        this.currentStep = stepId;
+    // Update actions (now includes back button)
+    this.renderActions(step.actions);
 
-        // Update browser history (unless we're responding to back/forward)
-        if (pushToHistory && !this.isNavigating) {
-            const url = new URL(window.location);
-            url.searchParams.set('step', stepId);
-            history.pushState({ step: stepId }, step.title, url.toString());
-        }
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-        // Hide loading, show content
-        this.elements.loading.classList.remove('show');
-        this.elements.content.style.display = 'block';
+  updateProgress() {
+    const currentIndex = this.stepOrder.indexOf(this.currentStep);
+    const totalSteps = this.stepOrder.length;
+    const progress =
+      currentIndex >= 0 ? ((currentIndex + 1) / totalSteps) * 100 : 0;
 
-        // Update content
-        this.elements.stepTitle.textContent = step.title;
-        this.elements.stepContent.innerHTML = step.content;
+    this.elements.stepCounter.textContent =
+      currentIndex >= 0
+        ? `Step ${currentIndex + 1} of ${totalSteps}`
+        : "Loading...";
+    this.elements.progressFill.style.width = `${progress}%`;
+  }
 
-        // Update step counter and progress
-        this.updateProgress();
+  renderActions(actions) {
+    this.elements.stepActions.innerHTML = "";
 
-        // Update actions (now includes back button)
-        this.renderActions(step.actions);
+    // Create button container
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "button-container";
 
-        // Scroll to top smoothly
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    let backButton = null;
+
+    // Add back button when not on first step
+    if (this.currentStep !== this.workflow.startStep) {
+      backButton = document.createElement("button");
+      backButton.className = "action-btn back-btn";
+      backButton.textContent = "← Back";
+      backButton.onclick = () => this.goBack();
     }
 
-    updateProgress() {
-        const currentIndex = this.stepOrder.indexOf(this.currentStep);
-        const totalSteps = this.stepOrder.length;
-        const progress = currentIndex >= 0 ? ((currentIndex + 1) / totalSteps) * 100 : 0;
+    // Add main action buttons
+    if (actions && actions.length > 0) {
+      const mainActions = document.createElement("div");
+      mainActions.className = "main-actions";
 
-        this.elements.stepCounter.textContent = currentIndex >= 0
-            ? `Step ${currentIndex + 1} of ${totalSteps}`
-            : 'Loading...';
-        this.elements.progressFill.style.width = `${progress}%`;
+      if (backButton) {
+        mainActions.appendChild(backButton);
+      }
+
+      actions.forEach((action) => {
+        const button = document.createElement("button");
+        button.className = "action-btn";
+        button.textContent = action.label;
+        button.onclick = () => this.handleAction(action);
+        mainActions.appendChild(button);
+      });
+
+      buttonContainer.appendChild(mainActions);
     }
 
-    renderActions(actions) {
-        this.elements.stepActions.innerHTML = '';
+    this.elements.stepActions.appendChild(buttonContainer);
+  }
 
-        // Create button container
-        const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'button-container';
+  handleAction(action) {
+    if (action.nextStep) {
+      // Add current step to history for potential back navigation
+      this.stepHistory.push(this.currentStep);
 
-        let backButton = null;
+      // Add button click effect
+      event.target.style.transform = "scale(0.95)";
 
-        // Add back button when not on first step
-        if (this.currentStep !== this.workflow.startStep) {
-            backButton = document.createElement('button');
-            backButton.className = 'action-btn back-btn';
-            backButton.textContent = '← Back';
-            backButton.onclick = () => this.goBack();
-        }
-
-        // Add main action buttons
-        if (actions && actions.length > 0) {
-            const mainActions = document.createElement('div');
-            mainActions.className = 'main-actions';
-
-            if (backButton) { mainActions.appendChild(backButton); }
-
-            actions.forEach(action => {
-                const button = document.createElement('button');
-                button.className = 'action-btn';
-                button.textContent = action.label;
-                button.onclick = () => this.handleAction(action);
-                mainActions.appendChild(button);
-            });
-
-            buttonContainer.appendChild(mainActions);
-        }
-
-        this.elements.stepActions.appendChild(buttonContainer);
+      // Navigate to next step with a small delay for better UX
+      setTimeout(() => {
+        this.showStep(action.nextStep);
+      }, 150);
     }
 
-    handleAction(action) {
-        if (action.nextStep) {
-            // Add current step to history for potential back navigation
-            this.stepHistory.push(this.currentStep);
-
-            // Add button click effect
-            event.target.style.transform = 'scale(0.95)';
-
-            // Navigate to next step with a small delay for better UX
-            setTimeout(() => {
-                this.showStep(action.nextStep);
-            }, 150);
-        }
-
-        // Handle other action types if needed
-        if (action.type === 'external_link' && action.url) {
-            window.open(action.url, '_blank');
-        }
+    // Handle other action types if needed
+    if (action.type === "external_link" && action.url) {
+      window.open(action.url, "_blank");
     }
+  }
 
-    showError(message) {
-        this.elements.loading.classList.remove('show');
-        this.elements.content.style.display = 'block';
-        this.elements.stepTitle.textContent = 'Error';
-        this.elements.stepContent.innerHTML = `
+  showError(message) {
+    this.elements.loading.classList.remove("show");
+    this.elements.content.style.display = "block";
+    this.elements.stepTitle.textContent = "Error";
+    this.elements.stepContent.innerHTML = `
             <div class="reminder urgent">
                 <strong>⚠️ Error:</strong><br>
                 ${message}
             </div>
             <p>Please check that all files are properly set up and try refreshing the page.</p>
         `;
-        this.elements.stepActions.innerHTML = '';
-        this.elements.stepCounter.textContent = '';
-        this.elements.progressFill.style.width = '0%';
-    }
+    this.elements.stepActions.innerHTML = "";
+    this.elements.stepCounter.textContent = "";
+    this.elements.progressFill.style.width = "0%";
+  }
 
-    // Method to go back to previous step
-    goBack() {
-        if (this.stepHistory.length > 0) {
-            const previousStep = this.stepHistory.pop();
-            this.showStep(previousStep);
+  // Method to go back to previous step
+  goBack() {
+    if (this.stepHistory.length > 0) {
+      const previousStep = this.stepHistory.pop();
+      this.showStep(previousStep);
+    }
+  }
+
+  // Method to restart workflow
+  restart() {
+    this.stepHistory = [];
+    this.showStep(this.workflow.startStep);
+  }
+
+  init() {
+    // Show loading initially
+    this.elements.loading.classList.add("show");
+
+    // Load workflow after a brief delay to show loading state
+    setTimeout(() => {
+      this.loadWorkflow().then(() => {
+        // Check if there's a step in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const stepFromUrl = urlParams.get("step");
+
+        if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
+          this.showStep(stepFromUrl, false);
+        } else {
+          this.showStep(this.workflow.startStep);
         }
-    }
-
-    // Method to restart workflow
-    restart() {
-        this.stepHistory = [];
-        this.showStep(this.workflow.startStep);
-    }
-
-    init() {
-        // Show loading initially
-        this.elements.loading.classList.add('show');
-
-        // Load workflow after a brief delay to show loading state
-        setTimeout(() => {
-            this.loadWorkflow().then(() => {
-                // Check if there's a step in the URL
-                const urlParams = new URLSearchParams(window.location.search);
-                const stepFromUrl = urlParams.get('step');
-
-                if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
-                    this.showStep(stepFromUrl, false);
-                } else {
-                    this.showStep(this.workflow.startStep);
-                }
-            });
-        }, 300);
-    }
+      });
+    }, 300);
+  }
 }
 
 // Initialize the workflow when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const workflow = new WorkflowManager();
-    workflow.init();
+document.addEventListener("DOMContentLoaded", () => {
+  const workflow = new WorkflowManager();
+  workflow.init();
 });
 
 // Optional: Make workflow manager available globally for debugging
