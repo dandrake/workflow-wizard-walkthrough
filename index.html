@@ -1,40 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VS Code Setup Workflow</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="workflow-card">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Loading workflow...</p>
-            </div>
-            
-            <div id="workflowContent" style="display: none;">
-                <div class="step-header">
-                    <div class="step-counter" id="stepCounter">Step 1 of 8</div>
-                    <h1 class="step-title" id="stepTitle">Loading...</h1>
-                </div>
-                
-                <div class="step-content" id="stepContent">
-                    <p>Loading workflow content...</p>
-                </div>
-                
-                <div class="actions" id="stepActions">
-                    <!-- Action buttons will be inserted here -->
-                </div>
-            </div>
+      <div class="workflow-card">
+        <!-- <div class="progress-bar"> -->
+        <!--     <div class="progress-fill" id="progressFill"></div> -->
+        <!-- </div> -->
+
+        <!-- <div class="loading" id="loading"> -->
+        <!--     <div class="spinner"></div> -->
+        <!--     <p>Loading workflow...</p> -->
+        <!-- </div> -->
+
+        <div id="start-over">
+          <button
+            class="action-btn back-btn"
+            onclick="window.location.href='/?step=welcome';"
+          >
+            Start over
+          </button>
         </div>
+
+        <div id="workflowContent" style="display: none">
+          <div class="step-header">
+            <div class="step-counter" id="stepCounter">Step ? of ?</div>
+            <h1 class="step-title" id="stepTitle">Loading...</h1>
+          </div>
+
+          <div class="step-content" id="stepContent">
+            <p>Loading workflow content...</p>
+          </div>
+
+          <div class="actions" id="stepActions">
+            <!-- Action buttons will be inserted here -->
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="workflow.js"></script>
-</body>
+  </body>
 </html>

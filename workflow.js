@@ -12,7 +12,7 @@ class WorkflowManager {
       stepTitle: document.getElementById("stepTitle"),
       stepContent: document.getElementById("stepContent"),
       stepActions: document.getElementById("stepActions"),
-      progressFill: document.getElementById("progressFill"),
+      //progressFill: document.getElementById("progressFill"),
     };
 
     // Set up browser back/forward button handling
@@ -67,7 +67,7 @@ class WorkflowManager {
     }
 
     // Hide loading, show content
-    this.elements.loading.classList.remove("show");
+    // this.elements.loading.classList.remove("show");
     this.elements.content.style.display = "block";
 
     // Update content
@@ -105,7 +105,7 @@ class WorkflowManager {
       currentIndex >= 0
         ? `Step ${currentIndex + 1} of ${totalSteps}`
         : "Loading...";
-    this.elements.progressFill.style.width = `${progress}%`;
+    // this.elements.progressFill.style.width = `${progress}%`;
   }
 
   renderActions(actions) {
@@ -181,7 +181,7 @@ class WorkflowManager {
         `;
     this.elements.stepActions.innerHTML = "";
     this.elements.stepCounter.textContent = "";
-    this.elements.progressFill.style.width = "0%";
+    // this.elements.progressFill.style.width = "0%";
   }
 
   // Method to go back to previous step
@@ -200,7 +200,7 @@ class WorkflowManager {
 
   init() {
     // Show loading initially
-    this.elements.loading.classList.add("show");
+    // this.elements.loading.classList.add("show");
 
     // Load workflow after a brief delay to show loading state
     setTimeout(() => {
