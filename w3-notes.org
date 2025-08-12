@@ -22,3 +22,19 @@
 21. lots of substeps, here, likely split hthose up
 22. let your instructor know you have it working (or not)
 23. have fun!
+* QUESTION remove back button?
+:PROPERTIES:
+:CREATED:  [2025-08-12T12:36:16-0500]
+:END:
+The browser back button works fine, why have our own? A start over
+button probably makes more sense and I have that.
+
+do we need it?
+* QUESTION Powershell instructions are wonky
+:PROPERTIES:
+:CREATED:  [2025-08-12T13:42:20-0500]
+:ID:       20250812T134231.061107
+:END:
+Installing Java Windows: [[file:install-java-win.html::<li>Open up Powershell by typing Windows and then Powershell (FIXME][the instructions to use Powershell]] look really
+wonky. And, does deleting the .gradle directory *actually* uninstall
+Java???

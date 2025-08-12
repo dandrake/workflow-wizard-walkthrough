@@ -51,7 +51,6 @@
         ]
       },
 
-
       "install-java-choose-os": {
         "title": "Install Java",
         "contentFile": "install-java-choose-os.html",
@@ -120,7 +119,6 @@
         ]
       },
 
-
       "install-java-win": {
         "title": "Install Java on Windows",
         "contentFile": "install-java-win.html",
@@ -129,17 +127,9 @@
           {
             "label": "Install VS Code",
             "nextStep": "install-vs-code"
-
           }
         ]
       },
-
-
-
-
-
-
-
 
       "install-java": {
         "title": "Install Java",
