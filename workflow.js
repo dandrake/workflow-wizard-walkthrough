@@ -96,8 +96,13 @@ class WorkflowManager {
   }
 
   updateProgress() {
-    const currentIndex = this.stepOrder.indexOf(this.currentStep);
-    const totalSteps = this.stepOrder.length;
+    // FIXME stepOrder no longer populated. For now just handle initial step.
+    let currentIndex = this.stepOrder.indexOf(this.currentStep);
+
+    if (this.currentStep === this.workflow.startStep) {
+      currentIndex = 0;
+    }
+    const totalSteps = Object.keys(this.workflow.steps).length;
     const progress =
       currentIndex >= 0 ? ((currentIndex + 1) / totalSteps) * 100 : 0;
 
@@ -169,7 +174,7 @@ class WorkflowManager {
   }
 
   showError(message) {
-    this.elements.loading.classList.remove("show");
+    //this.elements.loading.classList.remove("show");
     this.elements.content.style.display = "block";
     this.elements.stepTitle.textContent = "Error";
     this.elements.stepContent.innerHTML = `
