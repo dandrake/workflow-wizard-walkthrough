@@ -266,3 +266,11 @@ body {
 p + p {
   margin-top: 1em;
 }
+
+/* and between paragraphs that are followed by "reminder divs". Gotta
+   love CSS's adjacent sibling combinator...*/
+p + div.reminder {
+  margin-top: 1em;
+}
+
+blockquote + p { margin-top: 1em; color="red"; }

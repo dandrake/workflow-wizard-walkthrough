@@ -114,7 +114,7 @@
         "actions": [
           {
             "label": "Install VS Code",
-            "nextStep": "install-vs-code"
+            "nextStep": "download-vs-code"
           }
         ]
       },
@@ -126,12 +126,81 @@
         "actions": [
           {
             "label": "Install VS Code",
-            "nextStep": "install-vs-code"
+            "nextStep": "download-vs-code"
           }
         ]
       },
 
-      "install-java": {
+      "download-vs-code": {
+        "title": "Download VS Code for your operating system",
+        "contentFile": "download-vs-code.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "macOS",
+            "nextStep": "install-vs-code-mac"
+          },
+          {
+            "label": "Windows",
+            "nextStep": "install-vs-code-win"
+          }
+        ]
+      },
+
+      "install-vs-code-mac": {
+        "title": "Install VS Code on macOS",
+        "contentFile": "install-vs-code-macos.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Configure VS Code",
+            "nextStep": "configure-vs-code"
+          }
+        ]
+      },
+
+      "install-vs-code-win": {
+        "title": "Install VS Code on Windows",
+        "contentFile": "install-vs-code-win.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Configure VS Code",
+            "nextStep": "configure-vs-code"
+          }
+        ]
+      },
+
+      "configure-vs-code": {
+        "title": "Configure VS Code",
+        "contentFile": "configure-vs-code.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Install Git",
+            "nextStep": "install-git-choose-os"
+          }
+        ]
+      },
+
+      "install-git-choose-os": {
+        "title": "Install Git",
+        "contentFile": "install-git-choose-os.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "macOS",
+            "nextStep": "install-git-macos"
+          },
+
+          {
+            "label": "Windows",
+            "nextStep": "install-git-win"
+          }
+        ]
+      },
+
+      "prototype-install-java": {
         "title": "Install Java",
         "content": "<h2>oh hi there</h2><p>look at <img src=\"test-image.png\"> yes</p>",
         "contentFile": "step-install-java.html",

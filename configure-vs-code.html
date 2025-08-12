@@ -1,0 +1,233 @@
+<div class="reminder">
+  This step is pretty long. Ask for help if you run into any trouble!
+</div>
+
+<ol id="ol-1">
+  <li>
+    VS Code should start up and show you a welcome screen. You can customize the
+    theme and explore the other new user suggestions if you like, but you can
+    ignore or close that whole “Getting Started” tab whenever you like.
+  </li>
+  <li>
+    <p>
+      Click the <strong>Extensions</strong> icon in the sidebar on the left. It
+      is the one that has three connected squares, plus a fourth square floating
+      in the upper right:
+    </p>
+
+    <img
+      src="configure-vs-code-extensions-icon.png"
+      width="50px"
+      alt="the VS Code extensions icon, as described above"
+    />
+  </li>
+  <li>
+    <p>
+      Inside the extension list that appears, type <strong>Java</strong> in the
+      “Search Extensions” box:
+    </p>
+
+    <img
+      src="configure-vs-code-search-java-extension.png"
+      width="300px"
+      ]
+      alt="the VS Code search extensions field, with 'java' typed
+         into it"
+    />
+  </li>
+  <li>
+    <p>
+      One of the results, probably the very first one, will be the Extension
+      Pack for Java from Microsoft. The name may be truncated, as in the picture
+      below:
+    </p>
+
+    <img
+      src="install-vs-code-extension-pack-java-trunc.png"
+      width="300px"
+      alt="search result for the Extension Pack for Java, where the title
+    is cut off and just reads 'Extension P...'"
+    />
+
+    <p>
+      ...but if it is, you can click the extension to see the full details and
+      make sure you have the right one:
+    </p>
+
+    <img
+      src="install-vs-code-extension-pack-java.png"
+      width="400px"
+      alt="screenshot of the Extension Pack for Java installation box"
+    />
+  </li>
+</ol>
+
+<div class="reminder">
+  <p>
+    ⚠️ <strong>CAUTION</strong> Be sure you getting Java,
+    <strong>not</strong> JavaScript! The two are very
+    <em>different</em> languages that just happen to have similar names.
+  </p>
+
+  <p>
+    (The latter was originally called “LiveScript,” but they changed the name to
+    “JavaScript” at the last second because they heard that something big named
+    “Java” was coming out soon, and they wanted to get in on the action. See
+    <a href="https://en.wikipedia.org/wiki/JavaScript#History"
+      >Wikipedia on the history of JavaScript</a
+    >
+    for more details )
+  </p>
+
+  <p>
+    Both languages are useful and widely used, and you can install both in VS
+    Code if you want to. But <strong>Java</strong> is the one you will need for
+    this class.
+  </p>
+</div>
+
+<script>
+  // We have one logical ordered list, and I want to interrupt it with
+  // the reminder div. I *could* just hard-code the start attribute on
+  // the second HTML 'ol' below, but that's brittle and the kind of
+  // thing that will fail to get updated if we change the number of
+  // steps in the first HTML 'ol'. So we do this, which is arguably silly overkill...
+  const firstList = document.getElementById("ol-1");
+  const secondList = document.getElementById("ol-2");
+  const count = firstList.querySelectorAll("li").length;
+  secondList.start = count + 1;
+
+  // FIXME this doesn't work, figure out why Need to have it at the end,
+  // after all the HTML elements are derfined...but that doesn't work. 🫤
+</script>
+
+<ol id="ol-2" start="5">
+  <li>
+    <strong>If you can’t find the Java extension pack</strong>, then try
+    <a
+      href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack"
+      >this link</a
+    >
+    and click the big <strong>Install</strong> button.
+  </li>
+  <li>
+    Once you’re sure you have the correct extension, click
+    <strong>Install.</strong> Installation may take a while. Be patient.
+  </li>
+  <li>
+    You may get a welcome screen that encourages you to install a
+    <abbr title="Java Development Kit">JDK</abbr>. You shouldn’t need to do
+    that; you already installed it earlier in these instructions.
+  </li>
+  <li>
+    To verify that the installation worked, press ⌘-shift-P (Mac) / ctrl-shift-P
+    (Windows) to open Visual Studio’s “command palette,” which lets you search
+    for text editor commands by name. Type
+    <strong>java</strong> into the command palette. You should see a whole bunch
+    of commands whose name starts with “Java:”
+
+    <img
+      src="configure-vs-code-java-commands.png"
+      width="400px"
+      alt="the VS Code command palette showing many different Java
+    commands"
+    />
+
+    <p>
+      You might not see exactly the same commands as the one in the screenshot.
+      That is OK! Just make sure there is a large number of commands that start
+      with “Java:”, whatever the commands are.
+    </p>
+  </li>
+  <li>
+    You don’t need to <em>run</em> any of those commands right now; you are just
+    checking that they’re there. <strong>Press esc</strong> on your keyboard to
+    exit the command palette.
+  </li>
+  <li>
+    If you <em>don’t</em> see all those Java commands, then:
+    <ol type="a">
+      <li>
+        Try quitting and reopening Visual Studio Code again and repeat step 6.
+      </li>
+      <li>If that doesn’t work, go back to step 4 and try it again.</li>
+      <li>
+        If that <em>still</em> doesn’t work, ask the instructor or a preceptor
+        for help.
+      </li>
+    </ol>
+  </li>
+  <li>
+    <strong>Open the VS Code settings</strong> by pressing ⌘-comma (Mac) or
+    ctrl-comma (Windows). If the shortcut isn’t working, then navigate to Code
+    menu → Preferences → Settings (Mac) / File menu → Preferences → Settings
+    (Windows). There are several things to change in the settings:
+    <ol type="a">
+      <li>
+        <p>
+          <strong>Search for the setting named “Auto Save”</strong> using the
+          “Search settings” box. Set the dropdown to
+          <strong>onFocusChange</strong>. This way, every time you click the run
+          button, it will save your code first.
+        </p>
+
+        <img
+          src="configure-vs-code-auto-save.png"
+          width="300px"
+          alt="the VS Code auto save setting configuration"
+        />
+      </li>
+      <li>
+        <p>
+          We want to disable “hybrid mode,” which is a temperamental VS Code
+          option that sometimes causes projects to not run or load properly.
+          <strong>Search for “launch mode”</strong> in the settings search box,
+          then set <strong>Java &gt; Server: Launch Mode</strong> to
+          <strong>Standard</strong>:
+        </p>
+
+        <img
+          src="configure-vs-code-launch-mode.png"
+          width="400px"
+          alt="the VS Code Launch Mode setting configuration"
+        />
+      </li>
+      <li><p> Finally,        <strong>search for “generatesMetadataFilesAtProjectRoot”</strong> in
+          the settings search box (you can copy and paste that), and make sure
+          that <strong>“Generates Metadata Files At Project Root”</strong> is
+          <strong>enabled</strong>
+          (i.e. the checkbox is checked):
+        </p>
+
+        <img
+          src="configure-vs-code-generatesmetadatafiles.png"
+          width="400px"
+          alt="the VS Code
+        generatesMetaDataFilesAtProjectRoot setting configuration"
+        />
+      </li>
+      <li>
+        <p>
+          After changing that last setting, you may get this message in the
+          lower right corner:
+        </p>
+
+        <!-- counterintuively, this <p> doesn't need a closing </p>:
+             https://html.spec.whatwg.org/multipage/parsing.html#closing-elements-that-have-implied-end-tags
+             -->
+        <p>
+<pre><code>⚠️ Java Language Server configuration changed, please restart Visual Studio Code.
+Source: Language Support for Java(TM) by Red Hat...</code></pre>
+
+        <p><strong>Click “Restart Now.”</strong> (Don’t worry, VS Code should
+        restart quickly.) <strong>If you don’t see this message,</strong> quit
+        and reopen VS Code just to be safe.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<div class="reminder">
+  🎉 You did it! Marvel at your nicely-configured installation of VS Code, then
+  proceed to install the git version control system.
+</div>
