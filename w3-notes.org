@@ -51,3 +51,12 @@ Java???
 :END:
 ** git doesn't still use 'master' for initial branch name AFAIK [[file:install-git-win.html::please choose <strong>Override the default:</strong></p> FIXME][initial branch name setting]]
 ** better screenshot of VS Code source control icon [[file:verify-git.html::screenshot here][verify git page]]
+* Windows screenshot notes
+:PROPERTIES:
+:CREATED:  [2025-08-13T17:42:39-0500]
+:END:
+
+** downloading Java from adoptium
+got a "clietn side exception while loading...see browser console" but it
+got the MSI
+** java_home: first option is "will be installed on local hard drive"
