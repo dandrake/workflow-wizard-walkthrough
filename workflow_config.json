@@ -238,45 +238,40 @@
             "label": "Verify your git installation",
             "nextStep": "verify-git"
           }
-
         ]
       },
 
-            "verify-git": {
-              "title": "Verify your Git installation",
-              "contentFile": "verify-git.html",
-              "type": "instructions",
-              "actions": [
-                {
-                  "label": "Install GitHub Desktop",
-                  "nextStep": "install-github-desktop"
-                }
+      "verify-git": {
+        "title": "Verify your Git installation",
+        "contentFile": "verify-git.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Install GitHub Desktop",
+            "nextStep": "install-github-desktop"
+          }
         ]
       },
 
-
-
-    "install-github-desktop": {
-      "title": "Install GitHub Desktop",
-              "contentFile": "install-github-desktop.html",
-              "type": "instructions",
-              "actions": [
-                {
-                  "label": "Inst FIXME ",
-                  "nextStep": "install-github-desktop"
-                }
+      "install-github-desktop": {
+        "title": "Install GitHub Desktop",
+        "contentFile": "install-github-desktop.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Inst FIXME ",
+            "nextStep": "install-github-desktop"
+          }
         ]
       },
 
-
-      "placeholder-step": { "title": "a final placeholder step",
-                            "content": "silly little thing so I can copy and paste steps that have commas at the end. JSON is super strict about not having commas after the final thing in a list or object"
-                          }
+      "placeholder-step": {
+        "title": "a final placeholder step",
+        "content": "silly little thing so I can copy and paste steps that have commas at the end. JSON is super strict about not having commas after the final thing in a list or object"
+      }
     },
 
     "ignored-old-prototype-steps": {
-
-
       "install-java": {
         "title": "Install Java",
         "content": "<h2>oh hi there</h2><p>look at <img src=\"test-image.png\"> yes</p>",

@@ -273,4 +273,7 @@ p + div.reminder {
   margin-top: 1em;
 }
 
-blockquote + p { margin-top: 1em; color="red"; }
+blockquote + p {
+  margin-top: 1em;
+  color: "red";
+}

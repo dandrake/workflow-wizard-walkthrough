@@ -42,6 +42,8 @@ Java???
 :PROPERTIES:
 :CREATED:  [2025-08-13T08:47:07-0500]
 :END:
+** move pngs to images directory, too much clutter
+
 ** [[file:install-git-win.html::screenshot): FIXME get a new screenshot][new screenshot]] for git download
 ** [[file:install-git-macos.html::skip to the FIXME “If you are using Windows” section, below, and install git][downloading git for macOS]] just follow Windows instructions? Really?
 :PROPERTIES:
