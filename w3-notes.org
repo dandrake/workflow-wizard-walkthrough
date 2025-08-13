@@ -38,3 +38,14 @@ do we need it?
 Installing Java Windows: [[file:install-java-win.html::<li>Open up Powershell by typing Windows and then Powershell (FIXME][the instructions to use Powershell]] look really
 wonky. And, does deleting the .gradle directory *actually* uninstall
 Java???
+* TODO
+:PROPERTIES:
+:CREATED:  [2025-08-13T08:47:07-0500]
+:END:
+** [[file:install-git-win.html::screenshot): FIXME get a new screenshot][new screenshot]] for git download
+** [[file:install-git-macos.html::skip to the FIXME “If you are using Windows” section, below, and install git][downloading git for macOS]] just follow Windows instructions? Really?
+:PROPERTIES:
+:CREATED:  [2025-08-13T08:48:16-0500]
+:END:
+** git doesn't still use 'master' for initial branch name AFAIK [[file:install-git-win.html::please choose <strong>Override the default:</strong></p> FIXME][initial branch name setting]]
+** better screenshot of VS Code source control icon [[file:verify-git.html::screenshot here][verify git page]]
