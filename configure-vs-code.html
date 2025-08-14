@@ -2,7 +2,7 @@
   This step is pretty long. Ask for help if you run into any trouble!
 </div>
 
-<ol id="ol-1">
+<ol>
   <li>
     VS Code should start up and show you a welcome screen. You can customize the
     theme and explore the other new user suggestions if you like, but you can
@@ -11,13 +11,13 @@
   <li>
     <p>
       Click the <strong>Extensions</strong> icon in the sidebar on the left. It
-      is the one that has three connected squares, plus a fourth square floating
-      in the upper right:
+      is the one that has three connected squares, plus a tilted fourth square
+      floating in the upper right:
     </p>
 
     <img
       src="images/configure-vs-code-extensions-icon.png"
-      width="50"
+      width="68"
       alt="the VS Code extensions icon, as described above"
     />
   </li>
@@ -30,7 +30,6 @@
     <img
       src="images/configure-vs-code-search-java-extension.png"
       width="300"
-      ]
       alt="the VS Code search extensions field, with 'java' typed
          into it"
     />
@@ -55,53 +54,39 @@
     </p>
 
     <img
-      src="images/install-vs-code-extension-pack-java.png"
-      width="400"
+      src="images/configure-vs-code-extension-pack-java.png"
+      width="500"
       alt="screenshot of the Extension Pack for Java installation box"
     />
+    <!--   </li> -->
+    <!-- </ol> -->
+
+    <div class="reminder">
+      <p>
+        ⚠️ <strong>CAUTION</strong> Be sure you getting Java,
+        <strong>not</strong> JavaScript! The two are very
+        <em>different</em> languages that just happen to have similar names.
+      </p>
+
+      <p>
+        (The latter was originally called “LiveScript,” but they changed the
+        name to “JavaScript” at the last second because they heard that
+        something big named “Java” was coming out soon, and they wanted to get
+        in on the action. See
+        <a href="https://en.wikipedia.org/wiki/JavaScript#History"
+          >Wikipedia on the history of JavaScript</a
+        >
+        for more details )
+      </p>
+
+      <p>
+        Both languages are useful and widely used, and you can install both in
+        VS Code if you want to. But <strong>Java</strong> is the one you will
+        need for this class.
+      </p>
+    </div>
   </li>
-</ol>
 
-<div class="reminder">
-  <p>
-    ⚠️ <strong>CAUTION</strong> Be sure you getting Java,
-    <strong>not</strong> JavaScript! The two are very
-    <em>different</em> languages that just happen to have similar names.
-  </p>
-
-  <p>
-    (The latter was originally called “LiveScript,” but they changed the name to
-    “JavaScript” at the last second because they heard that something big named
-    “Java” was coming out soon, and they wanted to get in on the action. See
-    <a href="https://en.wikipedia.org/wiki/JavaScript#History"
-      >Wikipedia on the history of JavaScript</a
-    >
-    for more details )
-  </p>
-
-  <p>
-    Both languages are useful and widely used, and you can install both in VS
-    Code if you want to. But <strong>Java</strong> is the one you will need for
-    this class.
-  </p>
-</div>
-
-<script>
-  // We have one logical ordered list, and I want to interrupt it with
-  // the reminder div. I *could* just hard-code the start attribute on
-  // the second HTML 'ol' below, but that's brittle and the kind of
-  // thing that will fail to get updated if we change the number of
-  // steps in the first HTML 'ol'. So we do this, which is arguably silly overkill...
-  const firstList = document.getElementById("ol-1");
-  const secondList = document.getElementById("ol-2");
-  const count = firstList.querySelectorAll("li").length;
-  secondList.start = count + 1;
-
-  // FIXME this doesn't work, figure out why Need to have it at the end,
-  // after all the HTML elements are derfined...but that doesn't work. 🫤
-</script>
-
-<ol id="ol-2" start="5">
   <li>
     <strong>If you can’t find the Java extension pack</strong>, then try
     <a
@@ -128,7 +113,7 @@
 
     <img
       src="images/configure-vs-code-java-commands.png"
-      width="400"
+      width="500"
       alt="the VS Code command palette showing many different Java
     commands"
     />
@@ -173,7 +158,7 @@
 
         <img
           src="images/configure-vs-code-auto-save.png"
-          width="300"
+          width="550"
           alt="the VS Code auto save setting configuration"
         />
       </li>
@@ -188,7 +173,7 @@
 
         <img
           src="images/configure-vs-code-launch-mode.png"
-          width="400"
+          width="550"
           alt="the VS Code Launch Mode setting configuration"
         />
       </li>
@@ -204,7 +189,7 @@
 
         <img
           src="images/configure-vs-code-generatesmetadatafiles.png"
-          width="400"
+          width="550"
           alt="the VS Code
         generatesMetaDataFilesAtProjectRoot setting configuration"
         />
