@@ -174,12 +174,12 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  color: white;
   min-width: 150px;
 }
 
 .action-btn-enabled {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
 }
 
 .action-btn-disabled {
@@ -287,22 +287,12 @@ body {
 
 /* blank lines between paragraphs for various element combinations.  Gotta
    love CSS's adjacent sibling combinator...*/
-p + p {
-  margin-top: 1em;
-}
-
-p + div.reminder {
-  margin-top: 1em;
-}
-
-p + pre {
-  margin-top: 1em;
-}
-
-pre + p {
-  margin-top: 1em;
-}
-
-details + p {
+p + p,
+p + div.reminder,
+p + pre,
+pre + p,
+details + p,
+p + blockquote,
+blockquote + p {
   margin-top: 1em;
 }

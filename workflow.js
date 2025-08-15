@@ -28,6 +28,19 @@ class WorkflowManager {
         this.isNavigating = false;
       }
     });
+
+    /* Handle #id bits in the URL so that we can load a workflow step
+     * and jump to a particular sub-step / anchor:
+     */
+    window.addEventListener("load", function () {
+      if (window.location.hash) {
+        setTimeout(function () {
+          document
+            .getElementById(window.location.hash.substring(1))
+            ?.scrollIntoView();
+        }, 1000); // delay to ensure content is rendered
+      }
+    });
   }
 
   async loadWorkflow() {

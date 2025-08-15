@@ -272,10 +272,17 @@
         "type": "instructions",
         "actions": [
           {
-            "label": "Final steps ",
+            "label": "Final steps",
             "nextStep": "final-steps"
           }
         ]
+      },
+
+      "setting-vs-code-java.home-win": {
+        "title": "Manually setting VS Code's java.home on Windows",
+        "contentFile": "setting-vs-code-java.home-win.html",
+        "type": "instructions",
+        "actions": []
       },
 
       "final-steps": {

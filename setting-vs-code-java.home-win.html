@@ -1,0 +1,191 @@
+<p>
+  Sometimes (but not always!) the extension that helps VS Code handle Java
+  projects has trouble finding the Java installation on Windows. We aren’t sure
+  why this happens, but the following steps work around it:
+</p>
+
+<h2 id="find-your-java-installation">Find your Java installation</h2>
+<ol type="1">
+  <li>
+    <p>
+      <strong>Open Windows Explorer</strong>. (You can do this quickly by
+      holding down the Windows key and pressing E.)
+    </p>
+  </li>
+
+  <li>
+    <p>
+      In the list of locations on the left of the Explorer window, click
+      <strong>Local Disk (C:)</strong>.
+    </p>
+
+    <img
+      src="images/setting-vs-code-java.home-win-local-disk.png"
+      style="width: 95%"
+      alt="Windows Explorer screenshot with arrow pointing to the 'Local
+       Disk (C:)' in the sidebar"
+    />
+  </li>
+
+  <li>
+    <p>Open <strong>Program Files</strong>:</p>
+    <img
+      src="images/setting-vs-code-java.home-win-program-files.png"
+      alt="Windows Explorer screenshot with arrow pointing to 'Program Files'"
+      style="width: 75%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)"
+    />
+  </li>
+
+  <li>
+    <p>Open <strong>AdoptOpenJDK</strong>:</p>
+    <img
+      src="images/setting-vs-code-java.home-win-adopt-openjdk.png"
+      alt="Windows Explorer screenshot with arrow pointing to 'AdoptOpenJDK'"
+      style="width: 75%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)"
+    />
+  </li>
+
+  <li></li>
+
+  <li>
+    <p>
+      You should see a folder here with a name like
+      <strong>jdk-#####-hotspot</strong>. The exact name may look different than
+      the screenshot below, but it should start with “jdk.”
+      <strong>Open that folder</strong>.
+    </p>
+
+    <img
+      src="images/setting-vs-code-java.home-win-jdk.png"
+      alt="Windows Explorer screenshot with arrow pointing to 'jdk-14.0.2.12-hotspot'"
+      style="width: 75%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)"
+    />
+  </li>
+
+  <li>
+    <p>
+      The address bar at the top of your explorer window should now say
+      something similar to:
+    </p>
+
+    <blockquote>
+      This PC &gt; Local Disk (C:) &gt; Program Files &gt; AdoptOpenJDK &gt;
+      jdk-14.0.2.12-hotspot
+    </blockquote>
+
+    <p>
+      <strong>Right-click the jdk-####-hotspot item</strong> in the address bar,
+      then choose <strong>Copy address</strong> from the menu:
+      <img
+        src="images/setting-vs-code-java.home-win-copy-address.png"
+        alt="Windows Explorer screenshot for copying the address to the
+     'jdk...hotspot' folder"
+        style="width: 95%; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1)"
+      />
+    </p>
+  </li>
+</ol>
+
+<h2 id="tell-vs-code-where-java-is">Tell VS Code where Java is</h2>
+
+<ol type="1">
+  <li>
+    <p>Open Visual Studio Code.</p>
+  </li>
+  <li>
+    <p>
+      Press <strong>ctrl-,</strong> (i.e., hold down the control key and press
+      the comma key). This should open VS Code’s settings window:
+      <img
+        src="images/setting-vs-code-java.home-win-vs-code-settings.png"
+        alt="the VS Code Settings screen"
+        style="width: 75%"
+      />
+    </p>
+  </li>
+  <li>
+    <p>
+      Type <strong>java.home</strong> into the “Search settings” field, then
+      click the <strong>Edit in settings.json</strong> link below:
+    </p>
+    <p>
+      <img
+        src="images/setting-vs-code-java.home-win-edit-in-settings.png"
+        alt="screenshot pointing to 'java.home' and 'Edit in
+           settings.json'"
+        style="width: 95%"
+      />
+    </p>
+  </li>
+  <li>
+    <p>
+      You should see a <code>java.home”: “”</code> line like the one in this
+      screenshot, with your cursor right inside the empty quotes:
+      <img
+        src="images/setting-vs-code-java.home-win-java.home-blank.png"
+        alt="screenshot of the blank java.home setting"
+        style="width: 95%"
+      />
+    </p>
+    <p>
+      There might or might not be other lines around it. Ignore all that. All
+      that’s important is that you see that “java.home” line, just like it
+      appear in the screenshot above.
+    </p>
+  </li>
+  <li>
+    <p>
+      Press <strong>ctrl-V</strong> to paste the path you copied up above in
+      between the quotes. The result should look very similar to this:
+
+      <img
+        src="images/setting-vs-code-java.home-win-setting-fixed-1.png"
+        alt="screenshot of the pasted-in address for java.home, with
+                a squiggly underline indicating a problem"
+        style="width: 95%"
+      />
+    </p>
+  </li>
+  <li>
+    <p>
+      Note the squiggly underline and the red letters after the backslashes. We
+      need to fix that. Go through what you just pasted and
+      <strong>change every backslash into two backslashes</strong>. When you are
+      done, the squiggly underline should disappear:
+
+      <img
+        src="images/setting-vs-code-java.home-win-setting-fixed-2.png"
+        alt="screenshot of the pasted-in address for java.home"
+        style="width: 95%"
+      />
+    </p>
+  </li>
+  <li>
+    <p>Press <strong>ctrl-S</strong> to save your changes to this file.</p>
+  </li>
+  <li>
+    <p>
+      Press <strong>ctrl-W</strong> to close settings.json, then press
+      <strong>ctrl-W</strong> again to close Settings.
+    </p>
+  </li>
+  <li>
+    <p><strong>Quit</strong> VS Code.</p>
+  </li>
+  <li>
+    <p><strong>Open</strong> VS Code again.</p>
+  </li>
+</ol>
+
+<p>
+  Now return to the instructions for running your first Java project and see if
+  this fixed the problem. If it still doesn’t work, ask for help.
+</p>
+
+<p>
+  <a href="?step=run-first-java-project#bad-java.home">
+    <button class="action-btn-enabled action-btn">
+      Back to running your first Java project
+    </button></a
+  >
+</p>
