@@ -42,14 +42,20 @@ Java???
 :PROPERTIES:
 :CREATED:  [2025-08-13T08:47:07-0500]
 :END:
-** move pngs to images directory, too much clutter
+** DONE move pngs to images directory, too much clutter
+CLOSED: [2025-08-14 Thu 07:17]
 
 ** [[file:install-git-win.html::screenshot): FIXME get a new screenshot][new screenshot]] for git download
 ** [[file:install-git-macos.html::skip to the FIXME “If you are using Windows” section, below, and install git][downloading git for macOS]] just follow Windows instructions? Really?
 :PROPERTIES:
 :CREATED:  [2025-08-13T08:48:16-0500]
 :END:
-** git doesn't still use 'master' for initial branch name AFAIK [[file:install-git-win.html::please choose <strong>Override the default:</strong></p> FIXME][initial branch name setting]]
+** ANSWERED git doesn't still use 'master' for initial branch name AFAIK [[file:install-git-win.html::please choose <strong>Override the default:</strong></p> FIXME][initial branch name setting]]
+CLOSED: [2025-08-14 Thu 07:17]
+
+
+- State "ANSWERED"   from "ANSWERED"   [2025-08-14 Thu 07:17] \\
+  actually, it does...installed on Windows, works the same now.
 ** better screenshot of VS Code source control icon [[file:verify-git.html::screenshot here][verify git page]]
 * Windows screenshot notes
 :PROPERTIES:
@@ -57,6 +63,8 @@ Java???
 :END:
 
 ** downloading Java from adoptium
-got a "clietn side exception while loading...see browser console" but it
-got the MSI
+website gave me an error: "client side exception while loading...see
+browser console" but it got the MSI
 ** java_home: first option is "will be installed on local hard drive"
+
+#  LocalWords:  adoptium MSI
