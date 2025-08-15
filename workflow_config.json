@@ -289,31 +289,11 @@
         ]
       },
 
-
       "survey": {
         "title": "Let us know what you think",
         "contentFile": "survey.html",
         "type": "instructions"
-
       },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       "placeholder-step": {
         "title": "a final placeholder step",
