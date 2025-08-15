@@ -278,7 +278,7 @@
       },
 
       "final-steps": {
-        "title": "R final steps",
+        "title": "Final steps",
         "contentFile": "final-steps.html",
         "type": "instructions",
         "actions": [
@@ -293,13 +293,8 @@
       "survey": {
         "title": "Let us know what you think",
         "contentFile": "survey.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Let us k FIXME you're done, right?  ",
-            "nextStep": "survey.html"
-          }
-        ]
+        "type": "instructions"
+
       },
 
 
