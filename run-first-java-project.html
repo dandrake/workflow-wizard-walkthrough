@@ -1,0 +1,309 @@
+<p>
+  With these steps, you will use all the pieces together: Java, VS Code, git,
+  and GitHub Desktop.
+</p>
+
+<ol type="1">
+  <li>
+    <p>
+      Open the <strong>GitHub Desktop</strong> <strong>app</strong> if it isn’t
+      already open.
+    </p>
+    <p></p>
+
+    <div class="reminder">
+      ⚠️ <strong>CAUTION:</strong> The terminology here can be confusing.
+    </div>
+
+    <ul>
+      <li>
+        <strong><a href="https://git-scm.com">git</a></strong> is a free program
+        that tracks changes to your code, and helps you share code between
+        computers. Its job is to keep a history of the work you’ve done on your
+        code, and give you the ability to share that work with collaborators.
+      </li>
+      <li>
+        <strong><a href="https://github.com">GitHub</a></strong> is a commercial
+        service that uses git to store your code in the cloud. While git gives
+        you the <em>ability</em> to move code between computers, GitHub provides
+        <em>actual computers</em> — “servers” — to move it to and from. You will
+        connect to GitHub’s servers through the developer tools you use on your
+        computer, and also through the github.com web site.
+      </li>
+
+      <li>
+        <strong
+          ><a href="https://github.com/apps/desktop">GitHub Desktop</a></strong
+        >
+        is an application that runs on your computer, made by the folks at
+        GitHub to help you use their service. When we say “open the GitHub
+        Desktop app,” we specifically mean this app on your computer — not the
+        github.com web site.
+      </li>
+    </ul>
+
+    <p>
+      This is all a lot to take in right now! It will become clearer with
+      practice.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      Click the <strong>Clone a Repository from the Internet…</strong>
+      button.
+      <img
+        src="images/run-first-java-project-clone-repo.png"
+        width="500"
+        alt="GitHub Desktop dialog for creating a new repository, highlighting
+       the 'clone a repository from the internet' option"
+      />
+    </p>
+
+    <p>
+      This tells the app that you would like to get some code from GitHub in the
+      cloud and copy it to your own computer. The code you are going to get is a
+      “welcome to comp127” app that you can use to test your installation.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      In the “Clone a Repository” window that appears, choose
+      <strong>URL</strong>.
+    </p>
+  </li>
+  <li>
+    <p>
+      Type mac-comp127/welcome-app into the “URL or username/repository” text
+      field. ⚠️ <strong>CAUTION</strong> ⚠️
+      <strong>Don’t press return/enter yet!</strong>
+      <img
+        src="images/run-first-java-project-repo-url.png"
+        width="500"
+        alt="'clone a repository' dialog showing URL for the mac-comp127 welcome
+     app"
+      />
+    </p>
+  </li>
+
+  <li>
+    <p>
+      Take a look at the “Local Path” field. This tells GitHub Desktop where to
+      create a copy of the project on your computer:<br />
+      <img
+        src="images/run-first-java-project-repo-local-path.png"
+        width="500"
+        alt="'clone a repository' dialog showing local path where the
+     welcome app will be placed"
+      />
+    </p>
+
+    <p>
+      <strong
+        >Where is Github Desktop going to put it? Is that where you want to put
+        it?</strong
+      >
+      Missing these important questions is a common source of student confusion.
+    </p>
+    <p>
+      Perhaps you might like to create a comp127 folder for this class, and put
+      welcome-app inside it. Perhaps you already have a system for organizing
+      your work. Perhaps the place GitHub Desktop chose for you is perfectly
+      fine — but you still need to note where it is.
+    </p>
+    <p>
+      You can choose! No sensible answer is wrong here.
+      <strong>The only wrong answer is not paying attention.</strong>
+    </p>
+  </li>
+
+  <li>Once you’re happy with the location, click <strong>Clone</strong>.</li>
+
+  <li>
+    <p>
+      If everything worked, you should see a window like the screenshot below.
+      <strong>Look at the Current Repository name</strong> in the upper left; it
+      should say “welcome-app.” If it does, then click the
+      <strong>Open in Visual Studio Code</strong> button:
+
+      <img
+        src="images/run-first-java-project-current-repo.png"
+        width="600"
+        alt="GitHub Desktop screen for the newly-cloned welcome-app repository"
+      />
+    </p>
+
+    <p>
+      <strong>Note:</strong> You can also choose “Open in Visual Studio Code”
+      from the Repository menu:
+    </p>
+    <p>
+      <img
+        src="images/run-first-java-project-open-in-vs-code.png"
+        width="300"
+        alt="the 'Open in Visual Studio Code' item in the Repository menu"
+      />
+
+      <li>
+        <p>
+          You may be prompted with this window. Select
+          <strong>Yes, I trust the authors</strong> by clicking the green
+          button.
+        </p>
+
+        <img
+          src="images/run-first-java-project-trust-the-authors.png"
+          alt="VS Code dialog asking if you trust the authors of the files in this folder"
+        />
+      </li>
+      <li>
+        <p>
+          If you get this message, select <strong>Always</strong> (ignoring the
+          misplaced comma in the error message):
+
+          <img
+            src="images/run-first-java-project-import-java-projects.png"
+            width="500"
+            src="VS Code dialog asking about importing Java projects"
+          />
+
+          <li>
+            <p>
+              If you get a “Projects are imported into workspace” message, click
+              Don’t Show Again.
+            </p>
+          </li>
+          <li>
+            <p>
+              If you get this message, select <strong>Exclude Globally</strong>:
+            </p>
+            <img
+              src="images/run-first-java-project-exclude-globally.png"
+              width="500"
+              src="VS Code dialog on exclude Java project settings files from
+         the file explorer"
+            />
+          </li>
+
+          <li>
+            <p>
+              <strong>If you didn’t get any of these messages</strong>, then it
+              is possible that VS Code either can’t find the VS Code Java
+              extension or can’t find Java itself. Continue with setup—we’ll
+              know for sure when you try running the Welcome app!
+            </p>
+
+            <p>
+              <strong><em>Windows users:</em></strong> This happens sometimes on
+              Windows. We aren’t sure why.
+              <a
+                href="https://docs.google.com/document/d/18uehjt3Z12aZPz_ikHK56yApZLGcFYJxGD6YJGhZ_Ug/edit"
+                >Follow these instructions</a
+              >
+              to fix it.
+            </p>
+
+            <p>
+              If you are not using Windows, or if you tried that and it didn’t
+              work, then
+              <strong>ask the instructor or a preceptor for help</strong>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Now VS Code should show a message in the lower right saying
+              “Opening Java Project.” VS Code is doing two things: (1)
+              <strong>downloading dependencies</strong>, meaning other code that
+              this project’s code depends on, and (2)
+              <strong>building this project</strong>, meaning that it is turning
+              the code you just cloned into something your computer can actually
+              run.
+            </p>
+            <p>
+              This process is very slow the first time you open a Java project —
+              it can take several minutes! — but it will be much faster in the
+              future.
+            </p>
+          </li>
+          <li>
+            <p>
+              If you get this message, select <strong>Enable</strong>:
+
+              <img
+                src="images/run-first-java-project-semantic-highlighting.png"
+                width="500"
+                src="VS Code dialog asking about enabling semantic highlighting"
+              />
+            </p>
+          </li>
+
+          <li>
+            <p>
+              If it isn’t already selected, click the <strong>Explorer</strong>
+              icon on the left edge of the VS Code window. Then click
+              <strong>src</strong> (short for “source”) to see this project’s
+              code.
+
+              <img
+                src="images/run-first-java-project-explorer-src.png"
+                width="400"
+                src="VS Code screenshot showing the Explorer icon and
+         highlighting the src directory"
+              />
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Click on <strong>Welcome.java</strong>. You should see a file with
+              a bunch of code.
+            </p>
+
+            <img
+              src="images/run-first-java-project-welcome.java.png"
+              width="550"
+              src="VS Code screenshot showing the Welcome.java file"
+            />
+          </li>
+        </p>
+
+        <p>
+          Some things in that code might look familiar to you from your past
+          experience. Much of it probably looks like complete gibberish! No
+          matter how little or how much of it makes sense to you now, by the end
+          of this class you’ll be able to understand all the programming
+          language features you see here — and if some things do look familiar,
+          you’ll know something new about the underlying principles behind them.
+        </p>
+      </li>
+      <li>
+        <p>
+          It’s time to run the code! Click the
+          <strong>icon with a triangle and an insect</strong> on the left edge
+          of the window, then click the <strong>Run and Debug</strong> button:
+        </p>
+
+        <img
+          src="images/run-first-java-project-run-and-debug.png"
+          width="400"
+          src="VS Code Run and Debug screen"
+        />
+      </li>
+
+      <li>
+        <p>
+          If you see a window with a bunch of dancing letters like the
+          screenshot below,
+          <strong>congratulations! You’re up and running!</strong>
+          <img
+            src="images/run-first-java-project-up-and-running.png"
+            width="600"
+            src="screenshot of the Comp 127 Welcome app"
+          />
+        </p>
+      </li>
+    </p>
+  </li>
+</ol>

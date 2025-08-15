@@ -259,11 +259,66 @@
         "type": "instructions",
         "actions": [
           {
-            "label": "Inst FIXME ",
-            "nextStep": "install-github-desktop"
+            "label": "Run your first Java project ",
+            "nextStep": "run-first-java-project"
           }
         ]
       },
+
+      "run-first-java-project": {
+        "title": "Run your first Java project",
+        "contentFile": "run-first-java-project.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Final steps ",
+            "nextStep": "final-steps"
+          }
+        ]
+      },
+
+      "final-steps": {
+        "title": "R final steps",
+        "contentFile": "final-steps.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Let us know what you think ",
+            "nextStep": "survey"
+          }
+        ]
+      },
+
+
+      "survey": {
+        "title": "Let us know what you think",
+        "contentFile": "survey.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Let us k FIXME you're done, right?  ",
+            "nextStep": "survey.html"
+          }
+        ]
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       "placeholder-step": {
         "title": "a final placeholder step",
