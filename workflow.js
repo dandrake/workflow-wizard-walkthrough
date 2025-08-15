@@ -119,8 +119,13 @@ class WorkflowManager {
 
       actions.forEach((action) => {
         const button = document.createElement("button");
-        button.className = "action-btn";
+        button.className = "action-btn-enabled action-btn";
         button.textContent = action.label;
+        button.id = action.label;
+        if (action.startDisabled) {
+          button.disabled = true;
+          button.className = "action-btn action-btn-disabled";
+        }
         button.onclick = () => this.handleAction(action);
         mainActions.appendChild(button);
       });
@@ -208,3 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Optional: Make workflow manager available globally for debugging
 window.workflowManager = new WorkflowManager();
+
+function enableButton(id) {
+  const button = document.getElementById(id);
+  button.disabled = false;
+  button.className = "action-btn action-btn-enabled";
+}

@@ -46,7 +46,8 @@
         "actions": [
           {
             "label": "Install Java",
-            "nextStep": "install-java-choose-os"
+            "nextStep": "install-java-choose-os",
+            "startDisabled": true
           }
         ]
       },
