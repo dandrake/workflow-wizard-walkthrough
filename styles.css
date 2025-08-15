@@ -294,3 +294,7 @@ p + pre {
 pre + p {
   margin-top: 1em;
 }
+
+details + p {
+  margin-top: 1em;
+}
