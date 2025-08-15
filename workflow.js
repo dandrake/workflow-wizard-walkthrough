@@ -8,7 +8,6 @@ class WorkflowManager {
     this.elements = {
       loading: document.getElementById("loading"),
       content: document.getElementById("workflowContent"),
-      stepCounter: document.getElementById("stepCounter"),
       stepTitle: document.getElementById("stepTitle"),
       stepContent: document.getElementById("stepContent"),
       stepActions: document.getElementById("stepActions"),
@@ -85,32 +84,11 @@ class WorkflowManager {
       this.elements.stepContent.innerHTML = step.content;
     }
 
-    // Update step counter and progress
-    this.updateProgress();
-
     // Update actions (now includes back button)
     this.renderActions(step.actions);
 
     // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  updateProgress() {
-    // FIXME stepOrder no longer populated. For now just handle initial step.
-    let currentIndex = this.stepOrder.indexOf(this.currentStep);
-
-    if (this.currentStep === this.workflow.startStep) {
-      currentIndex = 0;
-    }
-    const totalSteps = Object.keys(this.workflow.steps).length;
-    const progress =
-      currentIndex >= 0 ? ((currentIndex + 1) / totalSteps) * 100 : 0;
-
-    this.elements.stepCounter.textContent =
-      currentIndex >= 0
-        ? `Step ${currentIndex + 1} of ${totalSteps}`
-        : "Loading...";
-    // this.elements.progressFill.style.width = `${progress}%`;
   }
 
   renderActions(actions) {
@@ -185,8 +163,6 @@ class WorkflowManager {
             <p>Please check that all files are properly set up and try refreshing the page.</p>
         `;
     this.elements.stepActions.innerHTML = "";
-    this.elements.stepCounter.textContent = "";
-    // this.elements.progressFill.style.width = "0%";
   }
 
   // Method to go back to previous step
