@@ -5,6 +5,9 @@ class WorkflowManager {
     this.stepHistory = [];
     this.stepOrder = []; // Will be populated based on workflow structure
     this.isNavigating = false; // Prevent double navigation
+    this.platform = null;
+    this.platformLocalStorageKey = "comp127-workflow-platform";
+
     this.elements = {
       loading: document.getElementById("loading"),
       content: document.getElementById("workflowContent"),
@@ -37,7 +40,7 @@ class WorkflowManager {
         setTimeout(function () {
           document
             .getElementById(window.location.hash.substring(1))
-            ?.scrollIntoView();
+          ?.scrollIntoView();
         }, 1000); // delay to ensure content is rendered
       }
     });
@@ -61,6 +64,19 @@ class WorkflowManager {
     }
   }
 
+  updatePlatformSpecificElements(platform) {
+    console.log(`updatePlatformSpecificElements, platform ${platform}`);
+    const currentPlatformElements = document.getElementsByClassName(platform);
+    for (var i=0; i < currentPlatformElements.length; i++) {
+      currentPlatformElements[i].className = `${platform} this-platform`;
+    }
+  }
+
+  setPlatform(platform) {
+    console.log(`Saving '${platform}' to local storage.`);
+    this.writePlatformToStorage(platform);
+  }
+
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
     if (!step) {
@@ -80,6 +96,8 @@ class WorkflowManager {
 
     // Hide loading, show content
     // this.elements.loading.classList.remove("show");
+
+    // FIXME: what does this do?
     this.elements.content.style.display = "block";
 
     // Update content
@@ -90,17 +108,15 @@ class WorkflowManager {
         .then((content) => {
           this.elements.stepContent.innerHTML = content;
         })
+        .then(this.updatePlatformSpecificElements(this.platform))
         .catch((error) =>
-          console.error("Error loading HTML fragment: ", errors),
+          console.error("Error loading HTML fragment: ", error),
         );
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
 
-    // Update actions (now includes back button)
     this.renderActions(step.actions);
-
-    // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -197,6 +213,43 @@ class WorkflowManager {
     this.showStep(this.workflow.startStep);
   }
 
+  detectPlatform() {
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const isMac = /Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(ua);
+    const isWin = /Win/i.test(platform) || /Windows/i.test(ua);
+    const isLinux = /Linux/i.test(platform) || /Linux/i.test(ua);
+    if (isMac) return "mac";
+    if (isWin) return "windows";
+    if (isLinux) return "linux";
+    return "other";
+  }
+n
+  debugOS() {
+    const ua = navigator.userAgent || 'no userAgent';
+    const platform = navigator.platform || 'no platform';
+
+    return `userAgent: ${ua}\nplatform: ${platform}`;
+
+  }
+
+  readPlatformFromStorage() {
+    try {
+      return localStorage.getItem(this.platformLocalStorageKey); // string or null
+    } catch (e) {
+      // localStorage can be disabled or unavailable in some contexts
+      return null;
+    }
+  }
+
+  writePlatformToStorage(os) {
+    try {
+      localStorage.setItem(this.platformLocalStorageKey, os);
+    } catch (e) {
+      // Quota exceeded or storage unavailable
+    }
+  }
+
   init() {
     // Show loading initially
     // this.elements.loading.classList.add("show");
@@ -208,11 +261,20 @@ class WorkflowManager {
         const urlParams = new URLSearchParams(window.location.search);
         const stepFromUrl = urlParams.get("step");
 
+        let platform = this.readPlatformFromStorage();
+        if (!platform) {
+          // not confident about full auto-detection, but if we are...
+          // platform = this.detectPlatform();
+          // this.writePlatformToStorage(platform);
+        }
+        this.platform = platform;
+
         if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
           this.showStep(stepFromUrl, false);
         } else {
           this.showStep(this.workflow.startStep);
         }
+
       });
     }, 300);
   }
@@ -232,3 +294,7 @@ function enableButton(id) {
   button.disabled = false;
   button.className = "action-btn action-btn-enabled";
 }
+
+// Local Variables:
+// eval: (subword-mode 1)
+// End:

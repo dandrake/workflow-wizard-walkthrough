@@ -296,3 +296,11 @@ p + blockquote,
 blockquote + p {
   margin-top: 1em;
 }
+
+/* classes for marking platform-specific content */
+.mac { background: pink;  }
+.win { background: lightblue; }
+.linux { background: yellow; }
+
+.this-platform { color: green; }
+.other-platform { color: lightgray; }

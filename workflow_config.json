@@ -45,9 +45,20 @@
         "type": "instructions",
         "actions": [
           {
-            "label": "Install Java",
-            "nextStep": "install-java-choose-os",
+            "label": "Start installing required software",
+            "nextStep": "choose-os",
             "startDisabled": true
+          }
+        ]
+      },
+      "choose-os": {
+        "title": "What kind of computer are you using?",
+        "contentFile": "choose-os.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Install Java",
+            "nextStep": "install-java-choose-os"
           }
         ]
       },
