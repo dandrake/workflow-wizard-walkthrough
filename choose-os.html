@@ -1,0 +1,30 @@
+Let's experiment with having the user choose their OS and platform once and
+using that state throughout, rather than making them choose Win/Mac/etc over and
+over again. We can also then suppress messages that aren't relevant. Put
+instructions on choosing your OS here. Also try some JS platform detection.
+
+<button onclick='window.workflowManager.setPlatform("mac")'>I'm a Mac</button>
+
+<button onclick='window.workflowManager.setPlatform("win")'>I'm a PC</button>
+
+<button onclick='window.workflowManager.setPlatform("linux")'>
+  I'm a penguin
+</button>
+
+<p id="os-info">This should get replaced by the OS detection stuff.</p>
+
+<div class="mac other-platform">Mac-specific content</div>
+
+<div class="win other-platform">Win-specific content</div>
+
+<div class="linux other-platform">Linux-specific content</div>
+
+<button onclick="window.workflowManager.resetPlatform()">
+  clear the local storage
+</button>
+
+<div class="mac other-platform">other Mac-specific content</div>
+
+<div class="win other-platform">ewropiuerwpuerw Win-specific content</div>
+
+<div class="linux other-platform">rrururu Linux-specific content</div>

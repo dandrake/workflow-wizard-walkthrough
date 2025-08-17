@@ -6,6 +6,9 @@ class WorkflowManager {
     this.stepHistory = [];
     this.stepOrder = []; // Will be populated based on workflow structure
     this.isNavigating = false; // Prevent double navigation
+    this.platform = null;
+    this.platformLocalStorageKey = "comp127-workflow-platform";
+
     this.elements = {
       loading: document.getElementById("loading"),
       content: document.getElementById("workflowContent"),
@@ -59,6 +62,50 @@ class WorkflowManager {
     }
   }
 
+  updatePlatformSpecificElements(platform) {
+    console.log(`updatePlatformSpecificElements, platform ${platform}`);
+    const currentPlatformElements = document.getElementsByClassName(platform);
+    for (var i = 0; i < currentPlatformElements.length; i++) {
+      currentPlatformElements[i].classList.remove("other-platform");
+      currentPlatformElements[i].classList.add("this-platform");
+    }
+  }
+
+  setPlatform(platform) {
+    console.log(`Saving '${platform}' to local storage.`);
+    this.writePlatformToStorage(platform);
+    setTimeout(() => {
+      this.updatePlatformSpecificElements(platform);
+    }, 500);
+  }
+
+  resetPlatform() {
+    console.log(`Clearing local storage for platform`);
+
+    localStorage.clear();
+    setTimeout(() => {
+      // I wanted to use document.getElementsByClassName, but that
+      // returns an object that updates "live", so if you remove the
+      // this-platform class while iterating, you're mutating the
+      // collection and can run into trouble. There are ways to work
+      // with that, but it's simpler to just use querySelectorAll, which
+      // returns a static, unchanging collection, namely a NodeList:
+      //
+      // https://www.w3schools.com/js/js_htmldom_nodelist.asp
+      // https://www.w3schools.com/jsref/met_element_queryselectorall.asp
+      //
+      // versus the classname version and DOMTokenList:
+      //
+      // https://www.w3schools.com/jsref/dom_obj_html_domtokenlist.asp
+      // https://www.w3schools.com/jsref/prop_element_classlist.asp
+      const currentPlatformElements =
+        document.querySelectorAll(".this-platform");
+      for (const element of currentPlatformElements) {
+        element.classList.replace("this-platform", "other-platform");
+      }
+    }, 500);
+  }
+
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
     if (!step) {
@@ -79,6 +126,9 @@ class WorkflowManager {
     // FIXME what does the display block do?
 
     // Hide loading, show content
+    // this.elements.loading.classList.remove("show");
+
+    // FIXME: what does this do?
     this.elements.content.style.display = "block";
 
     // Update content
@@ -89,17 +139,15 @@ class WorkflowManager {
         .then((content) => {
           this.elements.stepContent.innerHTML = content;
         })
+        .then(this.updatePlatformSpecificElements(this.platform))
         .catch((error) =>
-          console.error("Error loading HTML fragment: ", errors),
+          console.error("Error loading HTML fragment: ", error),
         );
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
 
-    // Update actions (now includes back button)
     this.renderActions(step.actions);
-
-    // Scroll to top smoothly
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -202,16 +250,58 @@ class WorkflowManager {
     this.showStep(this.workflow.startStep);
   }
 
- init() {
-    // FIXME can we just make the delay 0 or very small?
-    // and does this interact with the other # id handling timer?
+  detectPlatform() {
+    const ua = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+    const isMac = /Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(ua);
+    const isWin = /Win/i.test(platform) || /Windows/i.test(ua);
+    const isLinux = /Linux/i.test(platform) || /Linux/i.test(ua);
+    if (isMac) return "mac";
+    if (isWin) return "windows";
+    if (isLinux) return "linux";
+    return "other";
+  }
 
+  debugOS() {
+    const ua = navigator.userAgent || "no userAgent";
+    const platform = navigator.platform || "no platform";
+
+    return `userAgent: ${ua}\nplatform: ${platform}`;
+  }
+
+  readPlatformFromStorage() {
+    try {
+      return localStorage.getItem(this.platformLocalStorageKey); // string or null
+    } catch (e) {
+      // localStorage can be disabled or unavailable in some contexts
+      return null;
+    }
+  }
+
+  writePlatformToStorage(os) {
+    try {
+      localStorage.setItem(this.platformLocalStorageKey, os);
+    } catch (e) {
+      // Quota exceeded or storage unavailable
+    }
+  }
+
+  init() {
+    // Show loading initially
+    // this.elements.loading.classList.add("show");
     // Load workflow after a brief delay to show loading state
     this.loadWorkflow().then(() => {
+      let platform = this.readPlatformFromStorage();
+      if (!platform) {
+        // not confident about full auto-detection, but if we are...
+        // platform = this.detectPlatform();
+        // this.writePlatformToStorage(platform);
+      }
+      this.platform = platform;
+
       // Check if there's a step in the URL
       const urlParams = new URLSearchParams(window.location.search);
       const stepFromUrl = urlParams.get("step");
-
       if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
         this.showStep(stepFromUrl, false);
       } else {
@@ -227,3 +317,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.workflowManager = new WorkflowManager();
+
+function enableButton(id) {
+  const button = document.getElementById(id);
+  button.disabled = false;
+  button.className = "action-btn action-btn-enabled";
+}
+
+// Local Variables:
+// eval: (subword-mode 1)
+// End:
