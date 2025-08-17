@@ -11,10 +11,8 @@ class WorkflowManager {
       stepTitle: document.getElementById("stepTitle"),
       stepContent: document.getElementById("stepContent"),
       stepActions: document.getElementById("stepActions"),
-      //progressFill: document.getElementById("progressFill"),
     };
 
-    // Set up browser back/forward button handling
     this.setupBrowserNavigation();
   }
 
@@ -45,7 +43,6 @@ class WorkflowManager {
 
   async loadWorkflow() {
     try {
-      // Load workflow configuration from external JSON file
       const response = await fetch("workflow_config.json");
       if (!response.ok) {
         throw new Error(`Failed to load workflow config: ${response.status}`);
@@ -78,8 +75,9 @@ class WorkflowManager {
       history.pushState({ step: stepId }, step.title, url.toString());
     }
 
+    // FIXME what does the display block do?
+
     // Hide loading, show content
-    // this.elements.loading.classList.remove("show");
     this.elements.content.style.display = "block";
 
     // Update content
@@ -170,7 +168,6 @@ class WorkflowManager {
   }
 
   showError(message) {
-    //this.elements.loading.classList.remove("show");
     this.elements.content.style.display = "block";
     this.elements.stepTitle.textContent = "Error";
     this.elements.stepContent.innerHTML = `
@@ -191,6 +188,12 @@ class WorkflowManager {
     }
   }
 
+  enableButton(id) {
+    const button = document.getElementById(id);
+    button.disabled = false;
+    button.className = "action-btn action-btn-enabled";
+  }
+
   // Method to restart workflow
   restart() {
     this.stepHistory = [];
@@ -198,8 +201,9 @@ class WorkflowManager {
   }
 
   init() {
-    // Show loading initially
-    // this.elements.loading.classList.add("show");
+
+    // FIXME can we just make the delay 0 or very small?
+    // and does this interact with the other # id handling timer?
 
     // Load workflow after a brief delay to show loading state
     setTimeout(() => {
@@ -224,11 +228,4 @@ document.addEventListener("DOMContentLoaded", () => {
   workflow.init();
 });
 
-// Optional: Make workflow manager available globally for debugging
 window.workflowManager = new WorkflowManager();
-
-function enableButton(id) {
-  const button = document.getElementById(id);
-  button.disabled = false;
-  button.className = "action-btn action-btn-enabled";
-}
