@@ -69,6 +69,17 @@ class WorkflowManager {
       currentPlatformElements[i].classList.remove("other-platform");
       currentPlatformElements[i].classList.add("this-platform");
     }
+
+    const message = document.getElementById('platform-info');
+    console.log(this.debugOS());
+    if (message) {
+      message.innerHTML = this.debugOS();
+    }
+    else { console.log("no message element"); }
+
+
+
+
   }
 
   setPlatform(platform) {
@@ -159,6 +170,12 @@ class WorkflowManager {
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
+
+
+
+
+
+
 
     this.renderActions(step.actions);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -279,7 +296,7 @@ class WorkflowManager {
     const ua = navigator.userAgent || "no userAgent";
     const platform = navigator.platform || "no platform";
 
-    return `userAgent: ${ua}\nplatform: ${platform}`;
+    return `debugOS says:\nuserAgent: ${ua}\nplatform: ${platform}`;
   }
 
   readPlatformFromStorage() {
@@ -309,6 +326,8 @@ class WorkflowManager {
         // not confident about full auto-detection, but if we are...
         // platform = this.detectPlatform();
         // this.writePlatformToStorage(platform);
+
+        platform = this.detectPlatform() || "detect platform failed";
       }
       this.platform = platform;
 

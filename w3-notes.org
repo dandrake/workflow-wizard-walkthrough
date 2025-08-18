@@ -68,3 +68,31 @@ browser console" but it got the MSI
 ** java_home: first option is "will be installed on local hard drive"
 
 #  LocalWords:  adoptium MSI
+* useragent / platform detection notes
+:PROPERTIES:
+:CREATED:  [2025-08-18T10:54:38-0500]
+:END:
+
+some examples:
+
+my work Intel Macbook, Safari:
+#+begin_example
+debugOS says:
+userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15
+platform: MacIntel
+#+end_example
+
+my work Intel Macbook, Firefox:
+
+#+begin_example
+debugOS says:
+userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0
+platform: MacIntel
+#+end_example
+
+my work Intel Macbook, Chrome:
+#+begin_example
+debugOS says:
+userAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36
+platform: MacIntel
+#+end_example
