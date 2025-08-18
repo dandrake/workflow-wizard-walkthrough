@@ -1,3 +1,4 @@
+// TODO: use classList.add and remove, https://www.w3schools.com/jsref/prop_element_classlist.asp
 class WorkflowManager {
   constructor() {
     this.workflow = null;
@@ -114,7 +115,7 @@ class WorkflowManager {
     // Add back button when not on first step
     if (this.currentStep !== this.workflow.startStep) {
       backButton = document.createElement("button");
-      backButton.className = "action-btn back-btn";
+      backButton.classList.add("action-btn", "back-btn");
       backButton.textContent = "← Back";
       backButton.onclick = () => this.goBack();
     }
@@ -122,7 +123,7 @@ class WorkflowManager {
     // Add main action buttons
     if (actions && actions.length > 0) {
       const mainActions = document.createElement("div");
-      mainActions.className = "main-actions";
+      mainActions.classList.add("main-actions");
 
       if (backButton) {
         mainActions.appendChild(backButton);
@@ -130,12 +131,12 @@ class WorkflowManager {
 
       actions.forEach((action) => {
         const button = document.createElement("button");
-        button.className = "action-btn-enabled action-btn";
+        button.classList.add("action-btn", "action-btn-enabled");
         button.textContent = action.label;
         button.id = action.label;
         if (action.startDisabled) {
           button.disabled = true;
-          button.className = "action-btn action-btn-disabled";
+          button.classList.add("action-btn-disabled");
         }
         button.onclick = () => this.handleAction(action);
         mainActions.appendChild(button);
@@ -191,7 +192,8 @@ class WorkflowManager {
   enableButton(id) {
     const button = document.getElementById(id);
     button.disabled = false;
-    button.className = "action-btn action-btn-enabled";
+    button.classList.remove("action-btn-disabled");
+    button.classList.add("action-btn-enabled");
   }
 
   // Method to restart workflow
