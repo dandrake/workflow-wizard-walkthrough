@@ -68,14 +68,32 @@ class WorkflowManager {
     console.log(`updatePlatformSpecificElements, platform ${platform}`);
     const currentPlatformElements = document.getElementsByClassName(platform);
     for (var i=0; i < currentPlatformElements.length; i++) {
-      currentPlatformElements[i].className = `${platform} this-platform`;
+      currentPlatformElements[i].classList.remove('other-platform');
+      currentPlatformElements[i].classList.add('this-platform');
     }
   }
 
   setPlatform(platform) {
     console.log(`Saving '${platform}' to local storage.`);
     this.writePlatformToStorage(platform);
+
+    setTimeout(() => {   this.updatePlatformSpecificElements(platform);
+                     }, 100);
+
   }
+
+  resetPlatform() {
+    console.log(`Clearing local storage for platform`);
+
+    localStorage.clear();
+    setTimeout(() => {
+      const currentPlatformElements = document.getElementsByClassName('this-platform');
+      for (var i=0; i < currentPlatformElements.length; i++) {
+        currentPlatformElements[i].classList.remove('this-platform');
+        currentPlatformElements[i].classList.add('other-platform');
+      }}, 500);}
+
+
 
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
