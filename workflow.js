@@ -106,6 +106,19 @@ class WorkflowManager {
     }, 500);
   }
 
+  resetPlatform() {
+    console.log(`Clearing local storage for platform`);
+
+    localStorage.clear();
+    setTimeout(() => {
+      const currentPlatformElements = document.getElementsByClassName('this-platform');
+      for (var i=0; i < currentPlatformElements.length; i++) {
+        currentPlatformElements[i].classList.remove('this-platform');
+        currentPlatformElements[i].classList.add('other-platform');
+      }}, 500);}
+
+
+
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
     if (!step) {
