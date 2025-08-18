@@ -37,7 +37,7 @@ class WorkflowManager {
           document
             .getElementById(window.location.hash.substring(1))
             ?.scrollIntoView();
-        }, 1000); // delay to ensure content is rendered
+        }, 500); // delay to ensure content is rendered
       }
     });
   }
@@ -202,28 +202,24 @@ class WorkflowManager {
     this.showStep(this.workflow.startStep);
   }
 
-  init() {
-
+ init() {
     // FIXME can we just make the delay 0 or very small?
     // and does this interact with the other # id handling timer?
 
     // Load workflow after a brief delay to show loading state
-    setTimeout(() => {
-      this.loadWorkflow().then(() => {
-        // Check if there's a step in the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const stepFromUrl = urlParams.get("step");
+    this.loadWorkflow().then(() => {
+      // Check if there's a step in the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const stepFromUrl = urlParams.get("step");
 
-        if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
-          this.showStep(stepFromUrl, false);
-        } else {
-          this.showStep(this.workflow.startStep);
-        }
-      });
-    }, 300);
+      if (stepFromUrl && this.workflow.steps[stepFromUrl]) {
+        this.showStep(stepFromUrl, false);
+      } else {
+        this.showStep(this.workflow.startStep);
+      }
+    });
   }
 }
-
 // Initialize the workflow when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   const workflow = new WorkflowManager();
