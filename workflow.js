@@ -91,7 +91,6 @@ class WorkflowManager {
 
   resetPlatform() {
     console.log(`Clearing local storage for platform`);
-
     localStorage.clear();
     setTimeout(() => {
       // I wanted to use document.getElementsByClassName, but that
