@@ -296,3 +296,29 @@ p + blockquote,
 blockquote + p {
   margin-top: 1em;
 }
+
+/* styling for links on <li> elements where you get a right-clickable  */
+/* 🔗 when hovering */
+
+ol {
+  position: relative;
+}
+
+.anchor-link {
+  position: absolute;
+  left: -1.5em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+  line-height: inherit;
+}
+
+li:hover .anchor-link,
+li:focus-within .anchor-link,
+.anchor-link:focus {
+  opacity: 1;
+}
+
+.anchor-link::before {
+  content: "🔗";
+}
