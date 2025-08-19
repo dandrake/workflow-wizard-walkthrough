@@ -296,29 +296,3 @@ p + blockquote,
 blockquote + p {
   margin-top: 1em;
 }
-
-/* classes for marking platform-specific content */
-.mac {
-  background: pink;
-}
-.win {
-  background: lightblue;
-}
-.linux {
-  background: yellow;
-}
-
-.this-platform {
-  color: green;
-}
-
-.other-platform {
-  /* color: lightgray; */
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-}
-
-.other-platform:hover,
-.other-platform:focus-within {
-  opacity: 1;
-}
