@@ -70,12 +70,18 @@ class WorkflowManager {
       currentPlatformElements[i].classList.add("this-platform");
     }
 
+    setTimeout(
+      () => {
     const message = document.getElementById('platform-info');
     console.log(this.debugOS());
     if (message) {
       message.innerHTML = this.debugOS();
     }
     else { console.log("no message element"); }
+
+
+      }, 1000
+    );
 
 
 
@@ -171,11 +177,7 @@ class WorkflowManager {
       this.elements.stepContent.innerHTML = step.content;
     }
 
-
-
-
-
-
+    this.updatePlatformSpecificElements(this.platform);
 
     this.renderActions(step.actions);
     window.scrollTo({ top: 0, behavior: "smooth" });

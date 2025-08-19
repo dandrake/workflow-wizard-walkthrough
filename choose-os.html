@@ -3,6 +3,7 @@ using that state throughout, rather than making them choose Win/Mac/etc over and
 over again. We can also then suppress messages that aren't relevant. Put
 instructions on choosing your OS here. Also try some JS platform detection.
 
+<p>
 <button onclick='window.workflowManager.setPlatform("mac")'>I'm a Mac</button>
 
 <button onclick='window.workflowManager.setPlatform("win")'>I'm a PC</button>
@@ -10,6 +11,7 @@ instructions on choosing your OS here. Also try some JS platform detection.
 <button onclick='window.workflowManager.setPlatform("linux")'>
   I'm a penguin
 </button>
+</p>
 
 <p id="platform-info">This should get replaced by the platform detection stuff.</p>
 
@@ -23,8 +25,22 @@ instructions on choosing your OS here. Also try some JS platform detection.
   clear the local storage
 </button>
 
-<div class="mac other-platform">other Mac-specific content</div>
+<div class="mac other-platform">other Mac-specific content
+  <p>  <button class="action-btn action-btn-enabled">Do a macOS thing</button></p>
 
-<div class="win other-platform">ewropiuerwpuerw Win-specific content</div>
+</div>
 
-<div class="linux other-platform">rrururu Linux-specific content</div>
+<div class="win other-platform"><p>ewropiuerwpuerw Win-specific content</p>
+
+<p>  <button class="action-btn action-btn-enabled">Button for Windows stuff</button></p>
+
+</div>
+
+<div class="linux other-platform">rrururu Linux-specific content
+
+  🐧🐧🐧🐧🐧
+
+</div>
+
+
+<aside>Let's experiment with the HTML 'aside' element....</aside>
