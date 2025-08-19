@@ -309,16 +309,16 @@ blockquote + p {
 }
 
 .this-platform {
-     color: green;
+  color: green;
 }
 
 .other-platform {
-    /* color: lightgray; */
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
-
+  /* color: lightgray; */
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
-.other-platform:hover, .other-platform:focus-within {
-    opacity: 1;
+.other-platform:hover,
+.other-platform:focus-within {
+  opacity: 1;
 }

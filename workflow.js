@@ -70,22 +70,15 @@ class WorkflowManager {
       currentPlatformElements[i].classList.add("this-platform");
     }
 
-    setTimeout(
-      () => {
-    const message = document.getElementById('platform-info');
-    console.log(this.debugOS());
-    if (message) {
-      message.innerHTML = this.debugOS();
-    }
-    else { console.log("no message element"); }
-
-
-      }, 1000
-    );
-
-
-
-
+    setTimeout(() => {
+      const message = document.getElementById("platform-info");
+      console.log(this.debugOS());
+      if (message) {
+        message.innerHTML = this.debugOS();
+      } else {
+        console.log("no message element");
+      }
+    }, 1000);
   }
 
   setPlatform(platform) {
@@ -128,13 +121,14 @@ class WorkflowManager {
 
     localStorage.clear();
     setTimeout(() => {
-      const currentPlatformElements = document.getElementsByClassName('this-platform');
-      for (var i=0; i < currentPlatformElements.length; i++) {
-        currentPlatformElements[i].classList.remove('this-platform');
-        currentPlatformElements[i].classList.add('other-platform');
-      }}, 500);}
-
-
+      const currentPlatformElements =
+        document.getElementsByClassName("this-platform");
+      for (var i = 0; i < currentPlatformElements.length; i++) {
+        currentPlatformElements[i].classList.remove("this-platform");
+        currentPlatformElements[i].classList.add("other-platform");
+      }
+    }, 500);
+  }
 
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
@@ -298,7 +292,7 @@ class WorkflowManager {
     const ua = navigator.userAgent || "no userAgent";
     const platform = navigator.platform || "no platform";
 
-    return `debugOS says:\nuserAgent: ${ua}\nplatform: ${platform}`;
+    return `userAgent: ${ua}\nplatform: ${platform}`;
   }
 
   readPlatformFromStorage() {
@@ -328,7 +322,6 @@ class WorkflowManager {
         // not confident about full auto-detection, but if we are...
         // platform = this.detectPlatform();
         // this.writePlatformToStorage(platform);
-
         platform = this.detectPlatform() || "detect platform failed";
       }
       this.platform = platform;
@@ -344,6 +337,7 @@ class WorkflowManager {
     });
   }
 }
+
 // Initialize the workflow when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   const workflow = new WorkflowManager();

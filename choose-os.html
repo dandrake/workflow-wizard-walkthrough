@@ -1,19 +1,21 @@
 Let's experiment with having the user choose their OS and platform once and
 using that state throughout, rather than making them choose Win/Mac/etc over and
-over again. We can also then suppress messages that aren't relevant. Put
-instructions on choosing your OS here. Also try some JS platform detection.
+over again. Put instructions on choosing your OS here. We can also then suppress
+messages that aren't relevant.
 
 <p>
-<button onclick='window.workflowManager.setPlatform("mac")'>I'm a Mac</button>
+  <button onclick='window.workflowManager.setPlatform("mac")'>I'm a Mac</button>
 
-<button onclick='window.workflowManager.setPlatform("win")'>I'm a PC</button>
+  <button onclick='window.workflowManager.setPlatform("win")'>I'm a PC</button>
 
-<button onclick='window.workflowManager.setPlatform("linux")'>
-  I'm a penguin
-</button>
+  <button onclick='window.workflowManager.setPlatform("linux")'>
+    I'm a penguin
+  </button>
 </p>
 
-<p id="platform-info">This should get replaced by the platform detection stuff.</p>
+<p id="platform-info">
+  This should get replaced by the platform detection stuff.
+</p>
 
 <div class="mac other-platform">Mac-specific content</div>
 
@@ -25,22 +27,26 @@ instructions on choosing your OS here. Also try some JS platform detection.
   clear the local storage
 </button>
 
-<div class="mac other-platform">other Mac-specific content
-  <p>  <button class="action-btn action-btn-enabled">Do a macOS thing</button></p>
-
+<div class="mac other-platform">
+  other Mac-specific content
+  <p><button class="action-btn action-btn-enabled">Do a macOS thing</button></p>
 </div>
 
-<div class="win other-platform"><p>ewropiuerwpuerw Win-specific content</p>
+<div class="win other-platform">
+  <p>ewropiuerwpuerw Win-specific content</p>
 
-<p>  <button class="action-btn action-btn-enabled">Button for Windows stuff</button></p>
-
+  <p>
+    <button class="action-btn action-btn-enabled">
+      Button for Windows stuff
+    </button>
+  </p>
 </div>
 
-<div class="linux other-platform">rrururu Linux-specific content
-
-  🐧🐧🐧🐧🐧
-
+<div class="linux other-platform">
+  rrururu Linux-specific content 🐧🐧🐧🐧🐧
 </div>
 
-
-<aside>Let's experiment with the HTML 'aside' element....</aside>
+<aside>
+  Let's experiment with the HTML 'aside' element....looks like it's purely
+  semantic.
+</aside>
