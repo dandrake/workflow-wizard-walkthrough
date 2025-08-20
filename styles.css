@@ -120,6 +120,7 @@ body {
 
 .step-content pre code {
   background: transparent;
+  padding-left: 0px;
   border: none;
   font-family: "Monaco", "Consolas", monospace;
 }
