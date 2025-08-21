@@ -64,11 +64,13 @@ class WorkflowManager {
 
   updatePlatformSpecificElements(platform) {
     console.log(`updatePlatformSpecificElements, platform ${platform}`);
-    const currentPlatformElements = document.getElementsByClassName(platform);
-    for (var i = 0; i < currentPlatformElements.length; i++) {
-      currentPlatformElements[i].classList.remove("other-platform");
-      currentPlatformElements[i].classList.add("this-platform");
-    }
+    setTimeout(() => {
+      const currentPlatformElements = document.getElementsByClassName(platform);
+      for (var i = 0; i < currentPlatformElements.length; i++) {
+        currentPlatformElements[i].classList.remove("other-platform");
+        currentPlatformElements[i].classList.add("this-platform");
+      }
+    }, 1000);
 
     setTimeout(() => {
       const message = document.getElementById("platform-info");
@@ -169,8 +171,6 @@ class WorkflowManager {
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
-
-    this.updatePlatformSpecificElements(this.platform);
 
     this.renderActions(step.actions);
     window.scrollTo({ top: 0, behavior: "smooth" });

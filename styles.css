@@ -286,14 +286,59 @@ body {
   }
 }
 
-/* blank lines between paragraphs for various element combinations.  Gotta
-   love CSS's adjacent sibling combinator...*/
+/* This seems to be the most standards-compliant, idiomatic way to say,
+   in HTML+CSS, "I want a blank line between this element the previous
+   one". Gotta love CSS's adjacent sibling combinator....
+ */
 p + p,
 p + div.reminder,
 p + pre,
 pre + p,
 details + p,
+p + dl,
+dl + p,
 p + blockquote,
 blockquote + p {
   margin-top: 1em;
+}
+
+/* Classes for marking platform-specific content. No specific styling
+   right now; we use them for the semantics and functionality.
+ */
+.intel-mac {
+}
+.win {
+}
+.apple-silicon-mac {
+}
+
+.this-platform {
+}
+
+/* De-emphasize / dim / suppress content for the "other" platforms. We
+   could hide it entirely, but for now I'm not confident enough to do
+   that. So we just dim it out.
+ */
+.other-platform {
+  color: lightgray;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+/* Allow the user to more easily read that non-applicable content if
+   they hover.
+ */
+.other-platform:hover,
+.other-platform:focus-within {
+  color: gray;
+  opacity: 0.9;
+}
+
+dt {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+dd {
+  margin-left: 1em;
 }

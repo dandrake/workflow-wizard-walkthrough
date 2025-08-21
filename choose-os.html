@@ -15,58 +15,93 @@ Some of the instructions differ based on what kind of computer you are using.
       Processor or Chip. It will say something that contains either the word
       “Intel” or the word “Apple.” Ask for help if you’re not sure about this.
     </p>
-
-    <p>
-      Related terminology: you'll see these terms when referring to Intel or
-      Apple Silicon Macs. They are sometimes called the "architecture".
-    </p>
-
-    <ul>
-      <li>Intel: x64, x86-64</li>
-      <li>
-        Apple Silicon: aarch6, arm64; the chips that are called "M1", "M2", and
-        so on are Apple Silicon.
-      </li>
-    </ul>
   </li>
   <li>
     <strong>Linux user?</strong> If you are using Linux, just choose anything.
     We presume you are adventurous enough to adapt the instructions as needed.
-    🙂🐧
+    🙂🐧 There are some references to Linux sprinkled through the rest of these
+    instructions, though.
   </li>
 </ul>
 
-<p>
-  Choose your system below. In the rest of these instructions, those that don't
-  apply should be dimmed a bit.
-</p>
+<div class="reminder">
+  <p>
+    Related terminology: you'll see these terms when referring to the operating
+    system and processor. They are sometimes called the "architecture" or
+    "platform".
+  </p>
+
+  <dl>
+    <dt>Intel Macs and Windows processors</dt>
+    <dd>
+      x64, x86-64 (but what about Windows ARM? The Surface, Copilot PCs, etc?)
+    </dd>
+    <dt>Apple Silicon</dt>
+    <dd>
+      aarch6, arm64; the chips that are called "M1", "M2", and so on are Apple
+      Silicon.
+    </dd>
+
+    <dt>macOS installer files</dt>
+    <dd>
+      End with <code>dmg</code>, <code>pkg</code>, sometimes <code>zip</code>
+    </dd>
+
+    <dt>Windows installer files</dt>
+    <dd>
+      End with <code>exe</code>, <code>msi</code>, sometimes <code>zip</code>
+    </dd>
+  </dl>
+</div>
+
+<p>Choose your system below.</p>
 
 <p>
-  <button onclick='window.workflowManager.setPlatform("intel-mac")'>
+  <button
+    class="action-btn action-btn-enabled"
+    onclick='window.workflowManager.setPlatform("intel-mac")'
+  >
     Intel Mac
   </button>
-</p>
-
-<p>
-  <button onclick='window.workflowManager.setPlatform("apple-silicon-mac")'>
+  <button
+    class="action-btn action-btn-enabled"
+    onclick='window.workflowManager.setPlatform("apple-silicon-mac")'
+  >
     Apple Silicon Mac
+  </button>
+  <button
+    class="action-btn action-btn-enabled"
+    onclick='window.workflowManager.setPlatform("win")'
+  >
+    Windows
   </button>
 </p>
 
 <p>
-  <button onclick='window.workflowManager.setPlatform("win")'>Windows</button>
+  In the rest of these instructions, those that don't apply should be dimmed a
+  bit -- but you can hover over them to see them, if you like. Here are some
+  samples:
 </p>
 
-<p id="platform-info">
-  This should get replaced by the platform detection stuff.
-</p>
-
-<div class="intel-mac other-platform">Intel Mac-specific content</div>
-
-<div class="win other-platform">Win-specific content</div>
+<div class="intel-mac other-platform">
+  <p>
+    You selected Intel Mac and will see instructions for those displayed like
+    this.
+  </p>
+</div>
 
 <div class="apple-silicon-mac other-platform">
-  Apple Silicon-specific content
+  <p>
+    You selected Apple Silicon Mac and will see instructions for those displayed
+    like this.
+  </p>
+</div>
+
+<div class="win other-platform">
+  <p>
+    You selected Windows and will see instructions for those displayed like
+    this.
+  </p>
 </div>
 
 <div class="reminder urgent">

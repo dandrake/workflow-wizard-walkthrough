@@ -45,85 +45,40 @@
         "type": "instructions",
         "actions": [
           {
-            "label": "Install Java",
-            "nextStep": "install-java-choose-os",
+            "label": "Start installing required software",
+            "nextStep": "choose-os",
             "startDisabled": true
           }
         ]
       },
 
-      "install-java-choose-os": {
+      "choose-os": {
+        "title": "What kind of computer are you using?",
+        "contentFile": "choose-os.html",
+        "type": "instructions",
+        "actions": [
+          {
+            "label": "Install Java",
+            "nextStep": "install-java"
+          }
+        ]
+      },
+
+      "install-java": {
         "title": "Install Java",
-        "contentFile": "install-java-choose-os.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOS",
-            "nextStep": "install-java-macos"
-          },
-
-          {
-            "label": "Windows",
-            "nextStep": "install-java-win"
-          }
-        ]
-      },
-
-      "install-java-macos": {
-        "title": "Install Java on macOS",
-        "contentFile": "install-java-macos.html",
+        "contentFile": "install-java.html",
         "type": "instructions",
         "actions": [
           {
             "label": "Install VS Code",
-            "nextStep": "download-vs-code"
+            "nextStep": "install-vs-code"
           }
         ]
       },
 
-      "install-java-win": {
-        "title": "Install Java on Windows",
-        "contentFile": "install-java-win.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Install VS Code",
-            "nextStep": "download-vs-code"
-          }
-        ]
-      },
-
-      "download-vs-code": {
-        "title": "Download VS Code for your operating system",
-        "contentFile": "download-vs-code.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOS",
-            "nextStep": "install-vs-code-macos"
-          },
-          {
-            "label": "Windows",
-            "nextStep": "install-vs-code-win"
-          }
-        ]
-      },
-
-      "install-vs-code-macos": {
-        "title": "Install VS Code on macOS",
-        "contentFile": "install-vs-code-macos.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Configure VS Code",
-            "nextStep": "configure-vs-code"
-          }
-        ]
-      },
-
-      "install-vs-code-win": {
-        "title": "Install VS Code on Windows",
-        "contentFile": "install-vs-code-win.html",
+      "install-vs-code": {
+        "title": "Install Visual Studio Code",
+        "contentFile": "install-vs-code.html",
         "type": "instructions",
         "actions": [
           {
