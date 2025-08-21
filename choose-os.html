@@ -1,52 +1,85 @@
-Let's experiment with having the user choose their OS and platform once and
-using that state throughout, rather than making them choose Win/Mac/etc over and
-over again. Put instructions on choosing your OS here. We can also then suppress
-messages that aren't relevant.
+Some of the instructions differ based on what kind of computer you are using.
+
+<ul>
+  <li>
+    <strong>Windows users:</strong> you have it easy, just select Windows below.
+  </li>
+  <li>
+    <p>
+      <strong>Mac users:</strong> we need to know what kind of processor your
+      computer has. It's either "Intel", or "Apple Silicon".
+    </p>
+
+    <p>
+      Go to the Apple Menu → About This Mac, and look for a heading named either
+      Processor or Chip. It will say something that contains either the word
+      “Intel” or the word “Apple.” Ask for help if you’re not sure about this.
+    </p>
+
+    <p>
+      Related terminology: you'll see these terms when referring to Intel or
+      Apple Silicon Macs. They are sometimes called the "architecture".
+    </p>
+
+    <ul>
+      <li>Intel: x64, x86-64</li>
+      <li>
+        Apple Silicon: aarch6, arm64; the chips that are called "M1", "M2", and
+        so on are Apple Silicon.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Linux user?</strong> If you are using Linux, just choose anything.
+    We presume you are adventurous enough to adapt the instructions as needed.
+    🙂🐧
+  </li>
+</ul>
 
 <p>
-  <button onclick='window.workflowManager.setPlatform("mac")'>I'm a Mac</button>
+  Choose your system below. In the rest of these instructions, those that don't
+  apply should be dimmed a bit.
+</p>
 
-  <button onclick='window.workflowManager.setPlatform("win")'>I'm a PC</button>
-
-  <button onclick='window.workflowManager.setPlatform("linux")'>
-    I'm a penguin
+<p>
+  <button onclick='window.workflowManager.setPlatform("intel-mac")'>
+    Intel Mac
   </button>
+</p>
+
+<p>
+  <button onclick='window.workflowManager.setPlatform("apple-silicon-mac")'>
+    Apple Silicon Mac
+  </button>
+</p>
+
+<p>
+  <button onclick='window.workflowManager.setPlatform("win")'>Windows</button>
 </p>
 
 <p id="platform-info">
   This should get replaced by the platform detection stuff.
 </p>
 
-<div class="mac other-platform">Mac-specific content</div>
+<div class="intel-mac other-platform">Intel Mac-specific content</div>
 
 <div class="win other-platform">Win-specific content</div>
 
-<div class="linux other-platform">Linux-specific content</div>
-
-<button onclick="window.workflowManager.resetPlatform()">
-  clear the local storage
-</button>
-
-<div class="mac other-platform">
-  other Mac-specific content
-  <p><button class="action-btn action-btn-enabled">Do a macOS thing</button></p>
+<div class="apple-silicon-mac other-platform">
+  Apple Silicon-specific content
 </div>
 
-<div class="win other-platform">
-  <p>ewropiuerwpuerw Win-specific content</p>
+<div class="reminder urgent">
+  <details>
+    <summary>I chose the wrong one / my browser is confused!</summary>
 
-  <p>
-    <button class="action-btn action-btn-enabled">
-      Button for Windows stuff
+    <p>
+      If you chose the wrong one above, or your browser just seems confused,
+      click below to clear out what your browser thinks you are using, and then
+      reload the page and select again.
+    </p>
+    <button onclick="window.workflowManager.resetPlatform()">
+      Clear the locally-stored value for which system you are using
     </button>
-  </p>
+  </details>
 </div>
-
-<div class="linux other-platform">
-  rrururu Linux-specific content 🐧🐧🐧🐧🐧
-</div>
-
-<aside>
-  Let's experiment with the HTML 'aside' element....looks like it's purely
-  semantic.
-</aside>
