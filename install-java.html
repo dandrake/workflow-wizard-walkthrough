@@ -1,0 +1,153 @@
+<div class="this-platform" style="margin-bottom: 1em">
+  <p>
+    <strong>Everyone:</strong> first, go to
+    <a href="https://adoptium.net/">https://adoptium.net</a>.
+  </p>
+</div>
+
+<div class="apple-silicon-mac intel-mac other-platform">
+  <p><strong>Mac (Intel and Apple Silicon):</strong></p>
+
+  <ol>
+    <li>
+      <p>
+        The Adoptium homepage will have a big download button. It
+        <em>usually</em> offers the installer for the correct processor.
+      </p>
+
+      <img
+        src="images/install-java-macos-adoptium-homepage.png"
+        style="width: 95%"
+        alt="the adoptium homepage showing a download link for macOS"
+      />
+
+      <p>
+        ⚠️ <strong>Double check the offered installer:</strong> Intel Macs
+        should get the "x64" version, and Apple Silicon Macs should get the
+        "aarch64" version.
+      </p>
+
+      <details style="margin-top: 1em">
+        <summary>
+          <strong>If the site offers the wrong installer:</strong>
+        </summary>
+
+        <ol>
+          <li>
+            Select "Other Downloads" then scroll down the page to where you can
+            choose your processor. Select yours: "aarch64" for Apple Silicon,
+            "x64" for Intel.
+
+            <img
+              src="images/install-java-macos-choose-installer.png"
+              alt=""
+              style="width: 95%"
+              alt="download page allowing the user to choose between aarch and
+           x64 installers for macOS"
+            />
+          </li>
+          <li>
+            Make sure the correct one is highlighted and download the
+            <code>.PKG</code> installer.
+          </li>
+        </ol>
+      </details>
+    </li>
+
+    <li>
+      <p>
+        <strong>Open/run</strong> the installer when it is done downloading.
+      </p>
+
+      <div class="reminder">
+        <strong>If you get a message about having to install Rosetta,</strong>
+        then you are using an Apple Silicon machine and you downloaded the wrong
+        version. Go back to the previous step and ensure you download the
+        aarch64 installer.
+      </div>
+    </li>
+
+    <li>
+      <p>
+        Go through the installation process accepting
+        <strong>all the defaults</strong>.
+      </p>
+    </li>
+  </ol>
+</div>
+
+<div class="win other-platform">
+  <strong>Windows:</strong>
+
+  <p>
+    Go through the installation process accepting
+    <strong>all the defaults</strong>.
+  </p>
+
+  <ol type="1">
+    <li>
+      The installer may ask to “make changes to your device.” If it does, click
+      <strong>Yes</strong>.
+    </li>
+    <li>
+      Make sure to set the <strong>JAVA_HOME</strong> variable by clicking the
+      dropdown and selecting the first option as shown in blue below.
+
+      <img
+        src="images/install-java-win-java-home.png"
+        width="400"
+        alt="Screenshot of the Eclipse Temurin installer with the 'Set
+       JAVA_HOME variable' option selected"
+      />
+    </li>
+
+    <li>
+      This is the folder area to find where the JDK was installed: “<strong
+        >Eclipse Adoptium</strong
+      >”
+
+      <img
+        src="images/install-java-win-eclipse-adoptium.png"
+        width="400"
+        alt="Screenshot of Windows Explorer showing that the Java Development Kit was installed to 'C:\Program Files\Eclipse Adoptium'."
+      />
+    </li>
+  </ol>
+
+  <p>
+    If the installation succeeds, then…<strong>nothing happens</strong>. Don’t
+    worry! If you didn’t get any errors, it probably worked — and if you find
+    out later on that it didn’t, ask for help and we’ll fix it together.
+  </p>
+
+  <div class="reminder">
+    ⚠️ <strong>CAUTION:</strong> if you have
+    <strong>installed previous version(s) of Java</strong>, then after
+    installing Java, please follow the instructions below. (Click to expand
+    them.)
+  </div>
+
+  <details>
+    <summary>
+      <strong>Removing configuration for older versions of Java:</strong>
+    </summary>
+    <ol type="1">
+      <li>
+        Open up Powershell by tapping the Windows key and typing
+        <code>powershell</code>
+      </li>
+      <li>
+        In Powershell, enter <code>cd ~</code> and hit enter then type
+        <code>explorer .</code> and hit enter.
+      </li>
+      <li>Delete the hidden folder <code>.gradle</code> .</li>
+      <li>Restart your computer.</li>
+    </ol>
+  </details>
+</div>
+
+<p>
+  Now you have a Java compiler. Next we'll install an
+  <abbr title="Integrated Development Environment">IDE</abbr> to edit and work
+  with Java code.
+</p>

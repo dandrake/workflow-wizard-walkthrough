@@ -51,6 +51,7 @@
           }
         ]
       },
+
       "choose-os": {
         "title": "What kind of computer are you using?",
         "contentFile": "choose-os.html",
@@ -58,122 +59,26 @@
         "actions": [
           {
             "label": "Install Java",
-            "nextStep": "install-java-choose-os"
+            "nextStep": "install-java"
           }
         ]
       },
 
-      "install-java-choose-os": {
+      "install-java": {
         "title": "Install Java",
-        "contentFile": "install-java-choose-os.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOS",
-            "nextStep": "choose-processor-java-macos"
-          },
-
-          {
-            "label": "Windows",
-            "nextStep": "install-java-win"
-          }
-        ]
-      },
-
-      "choose-processor-java-macos": {
-        "title": "Download and install Java on macOS",
-        "contentFile": "choose-processor-java-macos.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Intel",
-            "nextStep": "download-java-intel-mac"
-          },
-          {
-            "label": "Apple Silicon",
-            "nextStep": "download-java-apple-silicon-mac"
-          }
-        ]
-      },
-
-      "download-java-intel-mac": {
-        "title": "Download Java for Intel Macs",
-        "contentFile": "download-java-intel-mac.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Install Java",
-            "nextStep": "install-java-macos"
-          }
-        ]
-      },
-
-      "download-java-apple-silicon-mac": {
-        "title": "Download Java for Apple Silicon Macs",
-        "contentFile": "download-java-apple-silicon-mac.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Install Java",
-            "nextStep": "install-java-macos"
-          }
-        ]
-      },
-      "install-java-macos": {
-        "title": "Install Java on macOS",
-        "contentFile": "install-java-macos.html",
+        "contentFile": "install-java.html",
         "type": "instructions",
         "actions": [
           {
             "label": "Install VS Code",
-            "nextStep": "download-vs-code"
+            "nextStep": "install-vs-code"
           }
         ]
       },
 
-      "install-java-win": {
-        "title": "Install Java on Windows",
-        "contentFile": "install-java-win.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Install VS Code",
-            "nextStep": "download-vs-code"
-          }
-        ]
-      },
-
-      "download-vs-code": {
-        "title": "Download VS Code for your operating system",
-        "contentFile": "download-vs-code.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOS",
-            "nextStep": "install-vs-code-mac"
-          },
-          {
-            "label": "Windows",
-            "nextStep": "install-vs-code-win"
-          }
-        ]
-      },
-
-      "install-vs-code-mac": {
-        "title": "Install VS Code on macOS",
-        "contentFile": "install-vs-code-macos.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Configure VS Code",
-            "nextStep": "configure-vs-code"
-          }
-        ]
-      },
-
-      "install-vs-code-win": {
-        "title": "Install VS Code on Windows",
-        "contentFile": "install-vs-code-win.html",
+      "install-vs-code": {
+        "title": "Install Visual Studio Code",
+        "contentFile": "install-vs-code.html",
         "type": "instructions",
         "actions": [
           {
