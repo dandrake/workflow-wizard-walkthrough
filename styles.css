@@ -291,6 +291,10 @@ body {
  */
 p + p,
 p + div.reminder,
+div.this-platform + p,
+p + div.this-platform,
+div.other-platform + p,
+p + div.other-platform,
 p + pre,
 pre + p,
 details + p,

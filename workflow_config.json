@@ -95,60 +95,14 @@
         "actions": [
           {
             "label": "Install Git",
-            "nextStep": "install-git-choose-os"
+            "nextStep": "install-git"
           }
         ]
       },
 
-      "install-git-choose-os": {
+      "install-git": {
         "title": "Install Git",
-        "contentFile": "install-git-choose-os.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOS",
-            "nextStep": "install-git-macos"
-          },
-
-          {
-            "label": "Windows",
-            "nextStep": "install-git-win"
-          }
-        ]
-      },
-
-      "install-git-macos": {
-        "title": "Install Git on macOS",
-        "contentFile": "install-git-macos.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "macOFIXME S",
-            "nextStep": "install-git-macos"
-          },
-
-          {
-            "label": "Windows",
-            "nextStep": "install FIXME -git-win"
-          }
-        ]
-      },
-
-      "install-git-macos": {
-        "title": "Install Git on macOS",
-        "contentFile": "install-git-macos.html",
-        "type": "instructions",
-        "actions": [
-          {
-            "label": "Verify your git installation",
-            "nextStep": "verify-git"
-          }
-        ]
-      },
-
-      "install-git-win": {
-        "title": "Install Git on Windows",
-        "contentFile": "install-git-win.html",
+        "contentFile": "install-git.html",
         "type": "instructions",
         "actions": [
           {
