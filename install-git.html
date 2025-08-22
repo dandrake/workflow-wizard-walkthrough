@@ -1,0 +1,208 @@
+<p>
+  <a href="https://git-scm.com">Git</a> is a <em>version control system</em>: it
+  allows you to track modifications to your code, and to remember past versions
+  of it, and work with multiple current versions. It also allows multiple people
+  to be working on the same code. In this course, though, the key feature is
+  that the GitHub website "speaks git": your local git (via VS Code) will send
+  your code to GitHub, and you'll use that for submitting assignments.
+</p>
+
+<p>
+  (If you are using Linux, you probably already have git installed. And if you
+  don’t, then you probably enjoy puzzling out installations for yourself
+  anyway.)
+</p>
+
+<div class="intel-mac apple-silicon-mac other-platform">
+  <p><strong>Mac (Intel and Apple Silicon):</strong></p>
+  <ol>
+    <li>
+      <p>
+        Open Spotlight by pressing <strong>command-space</strong>, or by
+        <strong>clicking the magnifying glass icon</strong> in the far upper
+        right of your screen:
+      </p>
+
+      <img
+        src="images/install-git-macos-spotlight.png"
+        width="263"
+        alt="the macOS Spotlight icon"
+      />
+    </li>
+
+    <li>
+      <p>
+        Type the word “<strong>Terminal</strong>” into the search box that
+        appears.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        The “top hit” should be an application called Terminal.
+        <strong>Open it</strong>.
+
+        <img
+          src="images/install-git-macos-terminal-search.png"
+          width="341"
+          alt="a macOS Spotlight search for 'terminal'"
+        />
+      </p>
+    </li>
+
+    <li>
+      <p>In the window that appears, <strong>type the following</strong>:></p>
+
+      <pre><code>git --version</code></pre>
+
+      <p>
+        ⚠️ <strong>CAUTION:</strong> be careful to type exactly what you see: a
+        space after the word “git,” then two dashes, then no space before the
+        word “version.” All of that matters.
+      </p>
+    </li>
+
+    <li>
+      <p><strong>Press return</strong>.</p>
+    </li>
+    <li>
+      <p>If you see a message like this:</p>
+
+      <pre><code style="font-size: 14px;">Last login: Wed Aug 13 11:23:58 on ttys000 dan@macos ~ % git --version
+ git version 2.48.1 (Apple Git-128)
+ dan@macos ~</code></pre>
+
+      <p>
+        ...where it says “git version” followed by a version number, then you
+        already have git installed.
+        <a href="/?step=verify-git">Click here to skip to the next section.</a>
+      </p>
+    </li>
+
+    <li>
+      <p>
+        If and <strong>only if</strong> you see a big error message that
+        includes “<strong>No developer tools found</strong>” or “<strong
+          >invalid active developer path</strong
+        >,” then do the following:
+      </p>
+      <ol type="a">
+        <li>
+          Copy and paste this into the Terminal, and press return:
+          <pre><code>sudo xcode-select --reset</code></pre>
+        </li>
+
+        <li>
+          It will ask for your computer password.
+          <strong>You won’t be able to see your own typing</strong>, but it is
+          working! Type your password and press return.
+        </li>
+
+        <li>
+          Now copy and paste this into the Terminal:
+          <pre><code>xcode-select --install</code></pre>
+        </li>
+
+        <li>
+          <p>
+            You should now see a message like this.
+            <strong>Click Install</strong> and follow the instructions.<br />
+            <img
+              src="images/install-git-macos-install-dev-tools.png"
+              width="441"
+              alt="dialog box that says the 'git' command requires command line
+       developer tools, do you want to install them?"
+            />
+          </p>
+
+          <p>
+            If you get a message about being unable to reach a server, please
+            see the Windows section below (hover over it to make it easier to
+            read).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The installation will take a few minutes. When it’s done, go back to
+            that Terminal window and try typing
+            <code>git --version</code> again. You should now get a version
+            number like the screenshot above.
+          </p>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</div>
+<div class="windows other-platform">
+  <p><strong>Windows:</strong></p>
+  <ol type="1">
+    <li>
+      Go to
+      <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a
+      ><br />
+    </li>
+
+    <li>
+      <strong>Click the Download button</strong> for the latest release (which
+      might have a newer version number than the one in this screenshot):
+
+      <img
+        src="images/install-git-win-download.png"
+        width="314"
+        alt="screenshot from
+  the git download page showing the button to download the latest
+  release of git"
+      />
+    </li>
+
+    <li><strong>Open/Run</strong> the downloaded installer.</li>
+
+    <li>
+      <p>
+        Windows may ask you if you want Git for Windows to be able to make
+        changes to your device. <strong>Click yes</strong>.
+      </p>
+
+      <img
+        src="images/install-git-win-make-changes.png"
+        width="500"
+        alt="Windows dialog box asking if Git for Windows can make changes to
+     your device"
+      />
+    </li>
+
+    <li>
+      <p>
+        You can click through <em>most</em> of the defaults by clicking “Next,”
+        ⚠️<strong>EXCEPT FOR TWO</strong>: when you get to the “Choosing the
+        default editor used by Git” step,
+        <strong>select Visual Studio Code</strong>.
+      </p>
+
+      <img
+        src="images/install-git-win-default-editor.png"
+        alt="dialog box for selecting the default editor used by git"
+      />
+    </li>
+
+    <li>
+      <p>
+        When asked about the “initial branch name in new repositories”, please
+        choose <strong>Override the default:</strong> and set the initial name
+        to "main":
+      </p>
+
+      <img
+        src="images/install-git-win-initial-branch.png"
+        alt="dialog for adjusting the name of the initial branch in new
+         git repositories, overriding it to be 'main'"
+      />
+    </li>
+
+    <li>
+      After this, <strong>click Next</strong> many, many times to accept all the
+      default options.<br />
+    </li>
+  </ol>
+</div>
