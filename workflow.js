@@ -1,4 +1,3 @@
-// TODO: use classList.add and remove, https://www.w3schools.com/jsref/prop_element_classlist.asp
 class WorkflowManager {
   constructor() {
     this.workflow = null;
@@ -71,16 +70,6 @@ class WorkflowManager {
         currentPlatformElements[i].classList.add("this-platform");
       }
     }, 1000);
-
-    setTimeout(() => {
-      const message = document.getElementById("platform-info");
-      console.log(this.debugOS());
-      if (message) {
-        message.innerHTML = this.debugOS();
-      } else {
-        console.log("no message element");
-      }
-    }, 1000);
   }
 
   setPlatform(platform) {
@@ -117,20 +106,6 @@ class WorkflowManager {
     }, 500);
   }
 
-  resetPlatform() {
-    console.log(`Clearing local storage for platform`);
-
-    localStorage.clear();
-    setTimeout(() => {
-      const currentPlatformElements =
-        document.getElementsByClassName("this-platform");
-      for (var i = 0; i < currentPlatformElements.length; i++) {
-        currentPlatformElements[i].classList.remove("this-platform");
-        currentPlatformElements[i].classList.add("other-platform");
-      }
-    }, 500);
-  }
-
   showStep(stepId, pushToHistory = true) {
     const step = this.workflow.steps[stepId];
     if (!step) {
@@ -149,11 +124,6 @@ class WorkflowManager {
     }
 
     // FIXME what does the display block do?
-
-    // Hide loading, show content
-    // this.elements.loading.classList.remove("show");
-
-    // FIXME: what does this do?
     this.elements.content.style.display = "block";
 
     // Update content
@@ -275,25 +245,6 @@ class WorkflowManager {
     this.showStep(this.workflow.startStep);
   }
 
-  detectPlatform() {
-    const ua = navigator.userAgent || "";
-    const platform = navigator.platform || "";
-    const isMac = /Mac/i.test(platform) || /Macintosh|Mac OS X/i.test(ua);
-    const isWin = /Win/i.test(platform) || /Windows/i.test(ua);
-    const isLinux = /Linux/i.test(platform) || /Linux/i.test(ua);
-    if (isMac) return "mac";
-    if (isWin) return "windows";
-    if (isLinux) return "linux";
-    return "other";
-  }
-
-  debugOS() {
-    const ua = navigator.userAgent || "no userAgent";
-    const platform = navigator.platform || "no platform";
-
-    return `userAgent: ${ua}\nplatform: ${platform}`;
-  }
-
   readPlatformFromStorage() {
     try {
       return localStorage.getItem(this.platformLocalStorageKey); // string or null
@@ -303,25 +254,22 @@ class WorkflowManager {
     }
   }
 
-  writePlatformToStorage(os) {
+  writePlatformToStorage(platform) {
     try {
-      localStorage.setItem(this.platformLocalStorageKey, os);
+      localStorage.setItem(this.platformLocalStorageKey, platform);
     } catch (e) {
       // Quota exceeded or storage unavailable
     }
   }
 
   init() {
-    // Show loading initially
-    // this.elements.loading.classList.add("show");
     // Load workflow after a brief delay to show loading state
     this.loadWorkflow().then(() => {
       let platform = this.readPlatformFromStorage();
       if (!platform) {
-        // not confident about full auto-detection, but if we are...
-        // platform = this.detectPlatform();
-        // this.writePlatformToStorage(platform);
-        platform = this.detectPlatform() || "detect platform failed";
+        // not confident about full auto-detection, but if we are, add
+        // back the detectPlatform function and do that here.
+        console.log("No platform set for this step.");
       }
       this.platform = platform;
 
@@ -346,9 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
 window.workflowManager = new WorkflowManager();
 
 function enableButton(id) {
-  const button = document.getElementById(id);
-  button.disabled = false;
-  button.className = "action-btn action-btn-enabled";
+  alert("wrong function!");
 }
 
 // Local Variables:
