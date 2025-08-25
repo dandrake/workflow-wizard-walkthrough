@@ -88,22 +88,22 @@ Some of the instructions differ based on what kind of computer you are using.
 
 <div class="intel-mac other-platform">
   <p>
-    You selected Intel Mac and will see instructions for those displayed like
-    this.
+    You selected Intel Mac and will see instructions for that system displayed
+    like this.
   </p>
 </div>
 
 <div class="apple-silicon-mac other-platform">
   <p>
-    You selected Apple Silicon Mac and will see instructions for those displayed
-    like this.
+    You selected Apple Silicon Mac and will see instructions for that system
+    displayed like this.
   </p>
 </div>
 
 <div class="win other-platform">
   <p>
-    You selected Windows and will see instructions for those displayed like
-    this.
+    You selected Windows and will see instructions for that system displayed
+    like this.
   </p>
 </div>
 
@@ -116,8 +116,34 @@ Some of the instructions differ based on what kind of computer you are using.
       click below to clear out what your browser thinks you are using, and then
       reload the page and select again.
     </p>
-    <button onclick="window.workflowManager.resetPlatform()">
-      Clear the locally-stored value for which system you are using
-    </button>
+    <p>
+      <button
+        onclick="window.workflowManager.resetPlatform()"
+        class="action-btn action-btn-enabled"
+      >
+        Clear the locally-stored value for which system you are using
+      </button>
+    </p>
   </details>
+</div>
+<div class="reminder urgent">
+  <p>
+    ⚠️
+    <strong
+      >In these instructions, if all the different instructions are dimmed
+      out:</strong
+    >
+    There's a bug we've seen in some browsers and some situations where the
+    instructions for your system are dimmed out. This is a problem with the
+    JavaScript code that creates the computer-specific instructions that we
+    haven't 100% figured out yet.
+  </p>
+
+  <p>
+    <strong>If you see this problem, to fix it:</strong> just try reloading the
+    page. In our testing, that generally resolves the problem. If even that
+    doesn't work: (1) tell the instructor about it and (2) just hover your mouse
+    over the section for your system -- that will make the instructions more
+    visible.
+  </p>
 </div>

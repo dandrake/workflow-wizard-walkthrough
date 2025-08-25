@@ -20,8 +20,11 @@ class WorkflowManager {
   }
 
   startOverClick() {
-    const newURL =  window.location.origin + window.location.pathname + '?step=welcome';
-    console.log(`new URL: ${newURL}`);
+    const newURL =
+      window.location.origin +
+      window.location.pathname +
+      "?step=" +
+      this.startStep;
     window.location.href = newURL;
   }
 
@@ -68,27 +71,32 @@ class WorkflowManager {
   }
 
   updatePlatformSpecificElements(platform) {
-    console.log(`updatePlatformSpecificElements, platform ${platform}`);
     setTimeout(() => {
+      console.log(`updatePlatformSpecificElements, platform ${platform}`);
       const currentPlatformElements = document.getElementsByClassName(platform);
+      console.log(
+        `updatePlatformSpecificElements found ${currentPlatformElements.length} elements to update`,
+      );
       for (var i = 0; i < currentPlatformElements.length; i++) {
         currentPlatformElements[i].classList.remove("other-platform");
         currentPlatformElements[i].classList.add("this-platform");
       }
-    }, 1000);
+    }, 100);
   }
 
   setPlatform(platform) {
     console.log(`Saving '${platform}' to local storage.`);
     this.writePlatformToStorage(platform);
+    this.platform = platform;
     setTimeout(() => {
       this.updatePlatformSpecificElements(platform);
-    }, 500);
+    }, 100);
   }
 
   resetPlatform() {
     console.log(`Clearing local storage for platform`);
     localStorage.clear();
+    this.platform = null;
     setTimeout(() => {
       // I wanted to use document.getElementsByClassName, but that
       // returns an object that updates "live", so if you remove the
@@ -140,16 +148,19 @@ class WorkflowManager {
         .then((content) => {
           this.elements.stepContent.innerHTML = content;
         })
-        .then(this.updatePlatformSpecificElements(this.platform))
+        .then(() => this.updatePlatformSpecificElements(this.platform))
+        .then(() => {
+          this.renderActions(step.actions);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        })
         .catch((error) =>
           console.error("Error loading HTML fragment: ", error),
         );
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
-
-    this.renderActions(step.actions);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // this.renderActions(step.actions);
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   renderActions(actions) {
@@ -253,7 +264,9 @@ class WorkflowManager {
 
   readPlatformFromStorage() {
     try {
-      return localStorage.getItem(this.platformLocalStorageKey); // string or null
+      const val = localStorage.getItem(this.platformLocalStorageKey); // string or null
+      console.log(`read ${val} platform from localstorage`);
+      return val;
     } catch (e) {
       // localStorage can be disabled or unavailable in some contexts
       return null;
@@ -269,13 +282,13 @@ class WorkflowManager {
   }
 
   init() {
-    // Load workflow after a brief delay to show loading state
+    console.log("workflow init");
     this.loadWorkflow().then(() => {
       let platform = this.readPlatformFromStorage();
       if (!platform) {
         // not confident about full auto-detection, but if we are, add
         // back the detectPlatform function and do that here.
-        console.log("No platform set for this step.");
+        console.log("No platform set in localStorage.");
       }
       this.platform = platform;
 
@@ -293,15 +306,9 @@ class WorkflowManager {
 
 // Initialize the workflow when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const workflow = new WorkflowManager();
-  workflow.init();
+  window.workflowManager = new WorkflowManager();
+  window.workflowManager.init();
 });
-
-window.workflowManager = new WorkflowManager();
-
-function enableButton(id) {
-  alert("wrong function!");
-}
 
 // Local Variables:
 // eval: (subword-mode 1)
