@@ -19,6 +19,12 @@ class WorkflowManager {
     this.setupBrowserNavigation();
   }
 
+  startOverClick() {
+    const newURL =  window.location.origin + window.location.pathname + '?step=welcome';
+    console.log(`new URL: ${newURL}`);
+    window.location.href = newURL;
+  }
+
   setupBrowserNavigation() {
     // Handle browser back/forward buttons
     window.addEventListener("popstate", (event) => {
