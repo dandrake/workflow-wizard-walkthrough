@@ -331,6 +331,17 @@ blockquote + p {
   transition: opacity 0.2s ease;
 }
 
+/* The 0.9 opacity for images doesn't seem to match the text; turn it
+   down a bit more */
+.other-platform img {
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.other-platform img:hover {
+  opacity: 0.9;
+}
+
 /* Allow the user to more easily read that non-applicable content if
    they hover.
  */
