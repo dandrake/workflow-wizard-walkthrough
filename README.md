@@ -16,3 +16,17 @@ Should be straightforward, see the JSON file.
 - https://dandrake.github.io/workflow-wizard-walkthrough/
 - locally: the simplest way is likely to just do `python -m http.server
   8000` in this directory.
+
+## Other notes
+
+### Choosing the platform
+
+Eventually we'll have to think about ARM-based Windows machines -- think
+-- the Surface Pro or Copilot PCs, etc.
+
+### Installing Java
+
+#### Linux
+
+Ubuntu ships a super old version of gradle, and getting things to work
+there from the terminal (that is, not in VS Code) is tricky.
