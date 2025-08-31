@@ -9,6 +9,21 @@ Think of this like a wiki -- something that gets frequently updated and
 modified, and remember [Wikipedia's "be bold" editing
 guideline](https://en.wikipedia.org/wiki/Wikipedia:Be_bold).
 
+## Installing software
+
+### ARM-based Windows computers
+
+Sooner or later some student is going to have an ARM-based Windows computer.
+
+Based on testing a Snapdragon-based Copilot PC on display at Costco: the
+adoptium.net site does default to an x86 download, but does have options
+for aarch64. VS Code also offers arm64 options. I wasn't able to see
+what the git homepage does, but you can click through and get arm64
+builds.
+
+Let's wait to update our instructions until we actually have a student
+encounter this.
+
 ## Configuring VS Code
 
 ### Disabling inlay/parameter hints
