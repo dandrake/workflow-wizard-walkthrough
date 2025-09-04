@@ -19,6 +19,9 @@ Should be straightforward, see the JSON file.
 
 ## Other notes
 
+See [the instructor notes](instructor_notes.md) for things we've run
+into and what to do about them. Add things there as you see fit.
+
 ### Choosing the platform
 
 Eventually we'll have to think about ARM-based Windows machines -- think
