@@ -39,94 +39,92 @@ body {
   max-width: 700px;
   position: relative;
   overflow: hidden;
-}
 
-.workflow-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+  }
 
-/* Step header */
-.step-header {
-  margin-bottom: 30px;
-}
+  .step-header {
+    margin-bottom: 30px;
 
-.step-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 10px;
-}
+    .step-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
 
-.step-counter {
-  font-size: 14px;
-  color: #667eea;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    .step-counter {
+      font-size: 14px;
+      color: #667eea;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
 }
 
 /* Step content */
 .step-content {
   margin-bottom: 40px;
   font-size: 16px;
-}
 
-.step-content h2 {
-  color: #2d3748;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
+  h2 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
 
-.step-content h3 {
-  color: #4a5568;
-  margin: 20px 0 15px 0;
-  font-size: 18px;
-}
+  h3 {
+    color: #4a5568;
+    margin: 20px 0 15px 0;
+    font-size: 18px;
+  }
 
-.step-content ul,
-.step-content ol {
-  margin: 15px 0;
-  padding-left: 25px;
-}
+  ul,
+  ol {
+    margin: 15px 0;
+    padding-left: 25px;
 
-.step-content li {
-  margin: 8px 0;
-}
+    li {
+      margin: 8px 0;
+    }
+  }
 
-.step-content a {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-}
+  a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
 
-.step-content a:hover {
-  text-decoration: underline;
-}
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
-.step-content code {
-  background: var(--code-bg);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: "Monaco", "Consolas", monospace;
-  color: #2d3748;
-  border: 1px solid #e2e8f0;
-}
+  code {
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Monaco", "Consolas", monospace;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+  }
 
-.step-content pre code {
-  background: transparent;
-  padding-left: 0px;
-  border: none;
-  font-family: "Monaco", "Consolas", monospace;
-}
+  pre {
+    background: var(--code-bg);
 
-.step-content pre {
-  background: var(--code-bg);
+    code {
+      background: transparent;
+      padding-left: 0px;
+      border: none;
+    }
+  }
 }
 
 /* Reminder boxes */
@@ -136,11 +134,11 @@ body {
   padding: 15px 20px;
   margin: 20px 0;
   border-radius: 0 8px 8px 0;
-}
 
-.reminder.urgent {
-  background: #fed7d7;
-  border-left-color: #f56565;
+  &.urgent {
+    background: #fed7d7;
+    border-left-color: #f56565;
+  }
 }
 
 /* Actions and buttons */
@@ -149,21 +147,21 @@ body {
   flex-direction: column;
   gap: 20px;
   align-items: center;
-}
 
-.button-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  align-items: center;
-}
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
 
-.main-actions {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+    .main-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 }
 
 .action-btn {
@@ -177,37 +175,37 @@ body {
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
   color: white;
   min-width: 150px;
-}
 
-.action-btn-enabled {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
 
-.action-btn-disabled {
-  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
-  color: gray;
-}
+  &:active {
+    transform: translateY(0);
+  }
 
-.action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-}
+  &.action-btn-enabled {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
 
-.action-btn:active {
-  transform: translateY(0);
-}
+  &.action-btn-disabled {
+    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+    color: gray;
+  }
 
-.back-btn {
-  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
-  box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
-  font-size: 14px;
-  min-width: 120px;
-  align-self: flex-start;
-}
+  &.back-btn {
+    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+    box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
+    font-size: 14px;
+    min-width: 120px;
+    align-self: flex-start;
 
-.back-btn:hover {
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-  box-shadow: 0 8px 25px rgba(113, 128, 150, 0.4);
+    &:hover {
+      background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+      box-shadow: 0 8px 25px rgba(113, 128, 150, 0.4);
+    }
+  }
 }
 
 /* Progress bar */
@@ -232,20 +230,20 @@ body {
   display: none;
   text-align: center;
   padding: 20px;
-}
 
-.loading.show {
-  display: block;
-}
+  &.show {
+    display: block;
+  }
 
-.spinner {
-  border: 3px solid #e2e8f0;
-  border-top: 3px solid #667eea;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 15px;
+  .spinner {
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+  }
 }
 
 @keyframes spin {
@@ -329,27 +327,28 @@ blockquote + p {
   color: lightgray;
   opacity: 0.6;
   transition: opacity 0.2s ease;
-}
 
-/* The 0.9 opacity for images doesn't seem to match the text; turn it
+  /* The 0.9 opacity for images doesn't seem to match the text; turn it
    down a bit more */
-.other-platform img {
-  opacity: 0.4;
-  transition: opacity 0.2s ease;
-}
+  img {
+    opacity: 0.6;
+    transition: opacity 1.2s ease;
 
-.other-platform img:hover {
-  opacity: 0.9;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    color: gray;
+    opacity: 0.9;
+  }
 }
 
 /* Allow the user to more easily read that non-applicable content if
    they hover.
  */
-.other-platform:hover,
-.other-platform:focus-within {
-  color: gray;
-  opacity: 0.9;
-}
 
 dt {
   font-weight: bold;
@@ -375,14 +374,19 @@ ol {
   transition: opacity 0.2s ease;
   text-decoration: none;
   line-height: inherit;
+
+  &::before {
+    content: "🔗";
+  }
+
+  &:focus {
+    opacity: 1;
+  }
 }
 
-li:hover .anchor-link,
-li:focus-within .anchor-link,
-.anchor-link:focus {
-  opacity: 1;
-}
-
-.anchor-link::before {
-  content: "🔗";
+li {
+  &:hover .anchor-link,
+  &:focus-within .anchor-link {
+    opacity: 1;
+  }
 }
