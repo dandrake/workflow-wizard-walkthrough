@@ -176,76 +176,89 @@
   </li>
   <li id="v5w6x7">
     <a href="#v5w6x7" class="anchor-link" aria-label="Link to this item"></a>
-    <strong>Open the VS Code settings</strong> by pressing ⌘-comma (Mac) or
-    ctrl-comma (Windows). If the shortcut isn't working, then navigate to Code
-    menu → Preferences → Settings (Mac) / File menu → Preferences → Settings
-    (Windows). There are several things to change in the settings:
-    <ol type="a">
-      <li>
-        <p>
-          <strong>Search for the setting named “Auto Save”</strong> using the
-          “Search settings” box. Set the dropdown to
-          <strong>onFocusChange</strong>. This way, every time you click the run
-          button, it will save your code first.
-        </p>
+    <p>
+      Now we want to add some settings to configure VS Code and the various
+      extensions you just installed. Here's the easiest way to get them all at
+      once.
+    </p>
 
-        <img
-          src="images/configure-vs-code-auto-save.png"
-          width="550"
-          alt="the VS Code auto save setting configuration"
-        />
-      </li>
-      <li>
-        <p>
-          We want to disable “hybrid mode,” which is a temperamental VS Code
-          option that sometimes causes projects to not run or load properly.
-          <strong>Search for “launch mode”</strong> in the settings search box,
-          then set <strong>Java &gt; Server: Launch Mode</strong> to
-          <strong>Standard</strong>:
-        </p>
+    <p>
+      Open the command palette again and search for
+      <strong>"user settings json"</strong>. Select
+      <strong>Preferences: Open User Settings (JSON)</strong>. That will open a
+      new window. If VS Code says the file doesn't exist, create it; otherwise,
+      delete everything there, and replace it with the following:
+    </p>
 
-        <img
-          src="images/configure-vs-code-launch-mode.png"
-          width="550"
-          alt="the VS Code Launch Mode setting configuration"
-        />
-      </li>
-      <li>
-        <p>
-          Finally,
-          <strong>search for “generatesMetadataFilesAtProjectRoot”</strong> in
-          the settings search box (you can copy and paste that), and make sure
-          that <strong>“Generates Metadata Files At Project Root”</strong> is
-          <strong>enabled</strong>
-          (i.e. the checkbox is checked):
-        </p>
+    <pre>
+{
+  "files.autoSave": "onFocusChange",
+  "java.server.launchMode": "Standard",
+  "java.import.generatesMetadataFilesAtProjectRoot": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "extensions.autoUpdate": false,
+  "chat.disableAIFeatures": true,
+  "vsintellicode.java.completionsEnabled": false
+}
+</pre
+    >
 
-        <img
-          src="images/configure-vs-code-generatesmetadatafiles.png"
-          width="550"
-          alt="the VS Code
-        generatesMetaDataFilesAtProjectRoot setting configuration"
-        />
-      </li>
+    <p>Save the file and restart Visual Studio Code.</p>
+  </li>
 
-      <li>
-        <p>
-          After changing that last setting, you may get this message in the
-          lower right corner:
-        </p>
+  <li id="verify-settings">
+    <a
+      href="#verify-settings"
+      class="anchor-link"
+      aria-label="Link to this item"
+    ></a>
+    <p>
+      <strong
+        >Optional but nice to do: verify that the settings are applied.</strong
+      >
+      <strong>Open the VS Code settings</strong> by pressing ⌘-comma (Mac) or
+      ctrl-comma (Windows). If the shortcut isn't working, then navigate to Code
+      menu → Preferences → Settings (Mac) / File menu → Preferences → Settings
+      (Windows).
+    </p>
 
-        <pre><code style="font-size: 12px;">⚠️ Java Language Server configuration changed, please restart Visual Studio Code.
-Source: Language Support for Java(TM) by Red Hat...</code></pre>
+    <p>
+      Search for <strong>"launch mode"</strong>. Verify that you see "Java >
+      Server: Launch Mode" set to <strong>Standard</strong>:
 
-        <p>
-          <strong>Click “Restart Now.”</strong> (Don’t worry, VS Code should
-          restart quickly.) <strong>If you don’t see this message,</strong> quit
-          and reopen VS Code just to be safe.
-        </p>
-      </li>
-    </ol>
+      <img
+        src="images/configure-vs-code-launch-mode.png"
+        width="550"
+        alt="the VS Code Launch Mode setting configuration"
+      />
+    </p>
+
+    <p>
+      <strong
+        >If you see that set to "Hybrid", go through the step above and make
+        sure your user settings have been correctly saved!</strong
+      >.
+    </p>
+
+    <div class="reminder urgent">
+      <p>
+        <strong>
+          ⚠️ If you are stuck here and can't get the settings correct:</strong
+        >
+        ask your instructor or a preceptor for help. Getting those settings
+        correct now will save you much confusion, frustration, and sadness
+        later.
+      </p>
+    </div>
   </li>
 </ol>
+
+<p>Now that you've done all that...</p>
 
 <div class="reminder">
   🎉 You did it! Marvel at your nicely-configured installation of VS Code, then
