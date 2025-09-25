@@ -212,7 +212,7 @@
       </li>
       <li>
         <p>
-          Finally,
+          next,
           <strong>search for “generatesMetadataFilesAtProjectRoot”</strong> in
           the settings search box (you can copy and paste that), and make sure
           that <strong>“Generates Metadata Files At Project Root”</strong> is
@@ -227,11 +227,10 @@
         generatesMetaDataFilesAtProjectRoot setting configuration"
         />
       </li>
-
       <li>
         <p>
-          After changing that last setting, you may get this message in the
-          lower right corner:
+          After changing that setting, you may get this message in the lower
+          right corner:
         </p>
 
         <pre><code style="font-size: 12px;">⚠️ Java Language Server configuration changed, please restart Visual Studio Code.
@@ -242,6 +241,36 @@ Source: Language Support for Java(TM) by Red Hat...</code></pre>
           restart quickly.) <strong>If you don’t see this message,</strong> quit
           and reopen VS Code just to be safe.
         </p>
+      </li>
+      <li>
+        <p>
+          In the past in this course, we've had lots of trouble with Microsoft
+          automatically updating extensions in ways that break your code. So now
+          that you've installed all those extensions, we'll make sure they don't
+          get silently "upgraded": <strong>search for "autoupdate"</strong> set
+          <strong>"Extensions: Auto Update"</strong> to <strong>"None"</strong>:
+        </p>
+        <img
+          src="images/configure-vs-code-disable-extension-auto-update.png"
+          width="550"
+          alt="the VS Code setting to disable auto-updates of
+             extensions"
+        />
+      </li>
+      <li>
+        <p>
+          Finally, we want to disable all the AI-driven features in VS Code.
+          Many of those "helpful" features will actually hinder your learning,
+          and in practice the user interface for them can be rather annoying. So
+          we'll disable them. Search for something like
+          <strong>"disable AI"</strong> and
+          <strong>make sure "Disable AI Features" is checked.</strong>
+        </p>
+
+        <img
+          src="images/configure-vs-code-disable-ai-features.png"
+          alt="the VS Code setting to disable AI features"
+        />
       </li>
     </ol>
   </li>
