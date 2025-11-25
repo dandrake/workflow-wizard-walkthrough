@@ -11,6 +11,7 @@ class WorkflowManager {
     this.elements = {
       loading: document.getElementById("loading"),
       content: document.getElementById("workflowContent"),
+      stepList: document.getElementById("stepList"),
       stepTitle: document.getElementById("stepTitle"),
       stepContent: document.getElementById("stepContent"),
       stepActions: document.getElementById("stepActions"),
@@ -141,6 +142,15 @@ class WorkflowManager {
     this.elements.content.style.display = "block";
 
     // Update content
+
+
+    var steps = "";
+    for (const [key, value] of Object.entries(this.workflow.steps)) {
+      steps += "<a href=?step=" + key + ">" + value.title + "</a><br />";
+    }
+    this.elements.stepList.innerHTML = "<h2>Step List</h2>" + steps;
+
+
     this.elements.stepTitle.textContent = step.title;
     if (step.contentFile) {
       fetch(step.contentFile)

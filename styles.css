@@ -21,13 +21,24 @@ body {
 
 /* Layout */
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 50px;
+  justify-content: flex-end;
+}
+
+.step-list {
+    width: 500px;
+    flex-shrink: 0;
+}
+
+.step-content {
+    width: 750px;
 }
 
 .workflow-card {
@@ -35,10 +46,11 @@ body {
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  width: 100%;
-  max-width: 700px;
+  //width: 100%;
+  max-width: 900px;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .workflow-card::before {
