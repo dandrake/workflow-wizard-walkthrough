@@ -138,17 +138,17 @@ class WorkflowManager {
       history.pushState({ step: stepId }, step.title, url.toString());
     }
 
-    // FIXME what does the display block do?
+    // display: block ensures our container fills the entire width
     this.elements.content.style.display = "block";
 
     // Update content
 
-
-    var steps = "";
+    var steps = "<h2>Step List</h2> <ul>"
     for (const [key, value] of Object.entries(this.workflow.steps)) {
-      steps += "<a href=?step=" + key + ">" + value.title + "</a><br />";
+      steps += "<li><a href=?step=" + key + ">" + value.title + "</a></li>";
     }
-    this.elements.stepList.innerHTML = "<h2>Step List</h2>" + steps;
+    steps += "</ul>"
+    this.elements.stepList.innerHTML = steps
 
 
     this.elements.stepTitle.textContent = step.title;
@@ -169,8 +169,6 @@ class WorkflowManager {
     } else {
       this.elements.stepContent.innerHTML = step.content;
     }
-    // this.renderActions(step.actions);
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   renderActions(actions) {

@@ -171,12 +171,8 @@
         "title": "Let us know what you think",
         "contentFile": "survey.html",
         "type": "instructions"
-      },
-
-      "placeholder-step": {
-        "title": "a final placeholder step",
-        "content": "silly little thing so I can copy and paste steps that have commas at the end. JSON is super strict about not having commas after the final thing in a list or object"
       }
+
     }
   }
 }

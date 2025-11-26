@@ -33,8 +33,9 @@ body {
 }
 
 .step-list {
-    width: 500px;
+    width: 400px;
     flex-shrink: 0;
+    font-size: 85%;
 }
 
 .step-content {
@@ -53,16 +54,6 @@ body {
   flex-shrink: 0;
 }
 
-.workflow-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-}
-
 /* Step header */
 .step-header {
   margin-bottom: 30px;
@@ -75,15 +66,6 @@ body {
   margin-bottom: 10px;
 }
 
-.step-counter {
-  font-size: 14px;
-  color: #667eea;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Step content */
 .step-content {
   margin-bottom: 40px;
   font-size: 16px;
