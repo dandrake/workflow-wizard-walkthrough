@@ -26,6 +26,11 @@ encounter this.
 
 ## Configuring VS Code
 
+### VS Code settings documentation
+
+See [[https://code.visualstudio.com/docs/configure/settings][User and
+workspace settings]] for documentation of all these settings.
+
 ### Disabling inlay/parameter hints
 
 VS Code may, by default, show "inlay hints" (also called parameter
@@ -44,7 +49,11 @@ errors, and have no idea how to fix it, since it appears almost
 identical to the first line that shows no syntax error.
 
 **To turn off parameter hints:** open Settings (ctrl/cmd comma) and
-search for "inlay" and turn off the inlay hints.
+search for "inlay" and turn off the inlay hints. Or, in `settings.json`,
+put in something like `"editor.inlayHints.enabled": "offUnlessPressed"`
+which is nice because you can do control-option (on Mac; I presume its
+control-alt on Windows and Linux) to show the hints which is IMHO a
+pretty nice UX.
 
 (In the command palette, there's "trigger parameter hints", but that's
 different -- it shows a little popup with the function signature.)
@@ -54,31 +63,29 @@ different -- it shows a little popup with the function signature.)
 Copilot is very eager to be helpful, and for a language like Java and
 example like the Game of Life, there is so much training data that any
 reasonable chatbot these days can write *everything* for the student.
+(Actually, not just that one -- Claude Code, as of November 2025, can
+complete every single in-class exercise and homework for 127 with one,
+simple "please complete this code for me"-style prompt.)
 
 If the student enabled GitHub Copilot (or VS Code did so for them), go
-to the Extensions pane, search for "copilot" and uninstall the
-extensions. (There's Copilot, and Copilot Chat).
+to the Extensions pane, search for "copilot" and uninstall or disable
+the extensions. (There's Copilot, and Copilot Chat).
 
 But! Copilot Chat and such seems to be deeply baked into VS Code these
-days. I followed [these
-instructions](https://stackoverflow.com/a/79449364) and added these
-settings to `defaultSettings.json`:
+days. You can disable all the GitHub Copilot AI features with this in
+`settings.json` (or `defaultSettings.json`, I think):
 
-```
-"github.copilot.enable": false,
-"github.copilot.editor.enableAutoCompletions": false,
-"github.copilot.editor.enableCodeActions": false,
-"github.copilot.nextEditSuggestions.enabled": false,
-"github.copilot.renameSuggestions.triggerAutomatically": false,
-"chat.commandCenter.enabled": false,
-"chat.agent.enabled": false
+
+```json
+"chat.disableAIFeatures": true,
 ```
 
-That seemed to truly turn off chat, though I *still* see an icon in the
-lower right to set up Copilot, and clicking in there I can turn on the
-chat even with the above setting, so it seems we can't truly lock this
-down. But of course students can always just go to a browser and copy
-and paste, so just making it a bit hard to find seems good enough.
+([See VS Code release notes](https://github.com/microsoft/vscode-docs/blob/vnext/release-notes/v1_104.md#hide-and-disable-github-copilot-ai-features)).
+
+There's also [these instructions](https://stackoverflow.com/a/79449364)
+and many others that suggest all sorts of settings. It seems that just
+the above one together with disabling the GitHub Copilot extensions does
+a good job of suppressing the AI stuff.
 
 ## Running Java
 
